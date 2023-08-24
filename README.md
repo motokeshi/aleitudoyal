@@ -1,24 +1,26 @@
-# README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+# アプリケーション名
+Aleitu.doyal（アレイツ・ドーヤル）
+# アプリケーション概要
+「あれ、やったのいつだっけ？」<br>
+「あれ、次はいつやればいいんだっけ？」<br>
+「あれ、どうやるんだったっけ？」<br>
+そんな「あれはいつ？どうやるの？」を解決する、リマインダー＆情報交換アプリケーションです。
+# URL
+# テスト用アカウント
+# 利用方法
+# アプリケーションを作成した背景
+浴室のカビ取り剤の使用、バイクのチェーンの清掃、キッチンの換気扇の分解、車のオイル交換など…定期的に行う必要があるものの、前回実施したのはいつで、次はいつやるべきかといったことを手軽に記録・計画するためのリマインダーアプリを妻も私も友人も欲していました。<br>
+たまにしか行わない事なのでやり方を忘れてしまい、取り掛かる度に検索をすることも多いため、リマインドだけではなく手順も合わせて記録できれば便利だと考えています。<br>
+せっかく手順も記録するのであれば、作成した手順を公開してユーザー同士で交流ができる場も作れればと思い、開発に取り組んでいます。
+# 洗い出した要件
+# 実装した機能についての画像やGIF及びその説明
+# 実装予定の機能
+# データベース設計
+# 画面遷移図
+# 開発環境
+# ローカルでの動作方法
+# 工夫したポイント
+# 改善点
+# 製作時間
