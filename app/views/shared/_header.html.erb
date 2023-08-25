@@ -13,11 +13,11 @@
         <li class="header-list-item">ルーム名ダミー</li>
         <% if user_signed_in? %>
           <li class="header-list-item">
-            <%= link_to @user.name, user_path(@user), class: "user-name" %>
-            <% if @user.image.present? %>
-              <%= link_to image_tag(@user.image, class: "header-user-image"), user_path(@user) %>
+            <%= link_to current_user.name, user_path(current_user), class: "user-name" %>
+            <% if current_user.image.present? %>
+              <%= link_to image_tag(current_user.image, class: "header-user-image"), user_path(current_user) %>
             <% else %>
-              <%= link_to image_tag("no-image.jpg", class: "header-user-image"), user_path(@user) %>
+              <%= link_to image_tag("no-image.jpg", class: "header-user-image"), user_path(current_user) %>
             <% end %>
           </li>
           <li class="header-list-item">
