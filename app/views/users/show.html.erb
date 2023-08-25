@@ -7,6 +7,7 @@
       <ul>
         <% if @user.image.present? %>
           <%= image_tag @user.image, class:"main-user-img" %>
+          <%= link_to "サムネイルを削除する", user_path(@user, thumb: true), data: { turbo_method: :delete } %>
         <% else %>
           <%= image_tag "no-image.jpg", class:"main-user-img" %>
         <% end %>
@@ -24,6 +25,7 @@
         </li>
       </ul>
       <%= link_to "ユーザー情報編集", edit_user_path(@user), class: "btn" %>
+      <%= link_to "！ユーザー削除！", "#", data: { turbo_method: :delete }, class: "btn" %>
     </div>
     <h1 class="wrapper-title">Recent Articles</h1>
     <p class="wrapper-subtitle"><%= "#{@user.name}" %>さんの最近の投稿</p>
