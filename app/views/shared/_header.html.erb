@@ -12,7 +12,9 @@
       <ul class="header-list">
         <li class="header-list-item">ルーム名ダミー</li>
         <% if user_signed_in? %>
-          <li class="header-list-item"><%= @user.name %></li>
+          <li class="header-list-item">
+            <%= link_to @user.name, user_path(@user), class: "user-name" %>
+          </li>
           <li class="header-list-item">
             <%= link_to "ログアウト", destroy_user_session_path, data: {turbo_method: :delete}, class: "logout btn" %>
           </li>

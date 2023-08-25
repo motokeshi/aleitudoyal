@@ -35,6 +35,11 @@
   margin-right: 20px;
 }
 
+.user-name {
+  font-weight: bold;
+  color: black;
+}
+
 .logout {
   border: black 2px solid;
   color: black;

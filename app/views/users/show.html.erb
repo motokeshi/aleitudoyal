@@ -1,0 +1,35 @@
+<%= render "shared/header" %>
+<div class="main">
+  <div class="main-wrapper">
+    <h1 class="wrapper-title">User Prfile</h1>
+    <p class="wrapper-subtitle">ユーザー詳細</p>
+    <div class="main-contents">
+      <ul>
+        <li class="main-list-item">
+          ユーザー名 : <%= @user.name %>
+        </li>
+        <li class="main-list-item">
+          メッセージ : <%= @user.message %>
+        </li>
+        <li class="main-list-item">
+          年代 : <%= @user.age_id %>
+        </li>
+        <li class="main-list-item">
+          性別 : <%= @user.gender_id %>
+        </li>
+        <li class="main-list-item">
+          メインジャンル : <%= @user.genre_id %>
+        </li>
+        <li class="main-list-item">
+          フリーメッセージ : <%= @user.text %>
+        </li>
+      </ul>
+    </div>
+    <h1 class="wrapper-title">Recent Articles</h1>
+    <p class="wrapper-subtitle"><%= "#{@user.name}" %>さんの最近の投稿</p>
+    ■<br>
+    dammy<br>
+    ■
+  </div>
+</div>
+<%= render "shared/footer" %>
