@@ -34,8 +34,6 @@ class DeviseCreateUsers < ActiveRecord::Migration[7.0]
 
       t.string :name, null: false
       t.string :message
-      t.integer :age_id
-      t.integer :gender_id
       t.integer :genre_id
       t.text :text
 
@@ -46,5 +44,6 @@ class DeviseCreateUsers < ActiveRecord::Migration[7.0]
     add_index :users, :reset_password_token, unique: true
     # add_index :users, :confirmation_token,   unique: true
     # add_index :users, :unlock_token,         unique: true
+    add_index :users, :name,                 unique: true
   end
 end
