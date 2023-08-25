@@ -24,6 +24,7 @@
           フリーメッセージ : <%= @user.text %>
         </li>
       </ul>
+      <%= link_to "ユーザー情報編集", edit_user_path(@user), class: "btn" %>
     </div>
     <h1 class="wrapper-title">Recent Articles</h1>
     <p class="wrapper-subtitle"><%= "#{@user.name}" %>さんの最近の投稿</p>
