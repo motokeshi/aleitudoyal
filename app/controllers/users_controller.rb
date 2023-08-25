@@ -10,15 +10,14 @@ class UsersController < ApplicationController
   def update
     @user = User.find(current_user.id)
     if @user.update(user_params)
-      redirect_to root_path
+      redirect_to user_path(current_user)
     else
       render :edit, status: :unprocessable_entity
     end
-
   end
 
   private
   def user_params
-    params.require(:user).permit(:image, :name, :message, :text)
+    params.require(:user).permit(:image, :name, :message, :genre_id, :text)
   end
 end
