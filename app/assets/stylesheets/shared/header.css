@@ -1,0 +1,87 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  width: calc(100vw - 60px);
+  margin: 0 30px;
+  height: 100px;
+  background-color: #fff;
+  box-shadow: 0px 0px 30px 30px #fff;
+}
+
+.header-logo {
+  width: 300px;
+}
+
+.header-nav {
+  width: calc(100% - 300px);
+  display: flex;
+  justify-content: space-between;
+}
+
+.header-logo-pict {
+  height: 100px;
+  margin-top: 5px;
+}
+
+.header-list {
+  display: flex;
+}
+
+.header-list-item {
+  margin-right: 20px;
+}
+
+.header-user-image {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  border: gray 4px solid;
+  object-fit: cover;
+}
+
+.user-name {
+  font-weight: bold;
+  color: black;
+}
+
+.logout {
+  border: black 2px solid;
+  color: black;
+}
+
+.logout:hover {
+  background-color: black;
+  color: #fff;
+}
+
+.login {
+  border: black 2px solid;
+  color: black;
+}
+
+.login:hover {
+  background-color: black;
+  color: #fff;
+}
+
+.btn {
+  margin: 0 5px;
+  border-radius: 5px;
+  padding: 1px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.registration {
+  border: black 2px solid;
+  color: black;
+}
+
+.registration:hover {
+  background-color: black;
+  color: #fff;
+}
