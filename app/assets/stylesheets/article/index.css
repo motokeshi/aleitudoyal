@@ -1,0 +1,147 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  width: calc(100vw - 60px);
+  margin: 0 30px;
+  height: 100px;
+  background-color: #fff;
+  box-shadow: 0px 0px 30px 30px #fff;
+}
+
+.header-logo {
+  width: 300px;
+}
+
+.header-nav {
+  width: calc(100% - 300px);
+  display: flex;
+  justify-content: space-between;
+}
+
+.header-logo-pict {
+  height: 100px;
+  margin-top: 5px;
+}
+
+.header-list {
+  display: flex;
+}
+
+.header-list-item {
+  margin-right: 20px;
+}
+
+.main {
+  background-color: #fff;
+  width: calc(100vw - 60px);
+  margin: 0 30px;
+}
+
+.footer{
+  height: 40px;
+  margin-top: 30px;
+  background-color: gray;
+  color: #fff;
+  text-align: center;
+  line-height: 40px;
+}
+
+.top-wrapper {
+  text-align: center;
+}
+
+.top-hero-pict {
+  width: 90vw;
+}
+
+.center-container {
+  display: flex;
+  width: 95vw;
+  margin: 20px 0;
+}
+
+.wrapper-title {
+  font-size: 40px;
+}
+
+.wrapper-subtitle {
+  border-bottom: grey solid 1px;
+  color: gray;
+}
+
+.center-left-wrapper {
+  width: 1000px;
+  border-radius: 10px;
+  border: gray solid 3px;
+  padding: 5px;
+}
+
+.list-item-contents {
+  display: flex;
+  justify-content: space-between;
+  margin: 5px 0;
+  font-size: 20px;
+}
+
+.left-wrapper-list-item:hover {
+  background-color: lightsalmon;
+  font-weight: bold;
+}
+
+.list-item-left-inner {
+  display: flex;
+}
+
+.remind-date {
+  margin-right: 10px;
+}
+
+.remind-next-schedule {
+  margin-top: 5px;
+  margin-right: 10px;
+  color: gray;
+  font-size: 16px;
+}
+
+.list-item-right-inner {
+  display: flex;
+}
+
+.btn {
+  margin: 0 5px;
+  border-radius: 5px;
+  padding: 1px;
+  font-size: 18px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.completion {
+  border: red 1px solid;
+  color: red;
+}
+
+.completion:hover {
+  background-color: red;
+  color: #fff;
+}
+
+.skip {
+  border: blue solid 1px;
+  color: blue;
+}
+
+.skip:hover {
+  background-color: blue;
+  color: #fff;
+}
+
+.center-right-wrapper {
+  width: calc(95vw - 1000px);
+  text-align: right;
+}
+
