@@ -1,10 +1,14 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!, except: :show
+
   def show
     @user = User.find(params[:id])
   end
 
   def edit
-    @user = current_user
+    @user = User.find(params[:id])
+    return if @user == current_user
+    redirect_to root_path
   end
 
   def update
@@ -31,4 +35,5 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:image, :name, :message, :genre_id, :text)
   end
+
 end

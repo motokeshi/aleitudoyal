@@ -14,7 +14,11 @@
         <% if user_signed_in? %>
           <li class="header-list-item">
             <%= link_to @user.name, user_path(@user), class: "user-name" %>
-            <%= image_tag @user.image, class: "header-user-image" %>
+            <% if @user.image.present? %>
+              <%= link_to image_tag(@user.image, class: "header-user-image"), user_path(@user) %>
+            <% else %>
+              <%= link_to image_tag("no-image.jpg", class: "header-user-image"), user_path(@user) %>
+            <% end %>
           </li>
           <li class="header-list-item">
             <%= link_to "ログアウト", destroy_user_session_path, data: {turbo_method: :delete}, class: "logout btn" %>
