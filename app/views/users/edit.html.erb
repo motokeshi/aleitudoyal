@@ -27,8 +27,8 @@
         <label class="form-text">フリーメッセージ</label>
         <%= f.text_area :text, class:"input-default", id:"text" %>
       </div>
-        <%= f.submit "Edit OK!" ,class:"btn" %>
-      </div>
+      <%= link_to "キャンセル", user_path(@user), class: "btn" %>
+      <%= f.submit "Edit OK!" ,class:"btn" %>
     <% end %>
   </div>
 </div>
