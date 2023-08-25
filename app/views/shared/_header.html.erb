@@ -1,6 +1,6 @@
 <header class="header">
   <div class="header-logo">
-    <%= image_tag "aleitu-logo.png", class: "header-logo-pict" %>
+    <%= link_to image_tag("aleitu-logo.png", class: "header-logo-pict"), root_path %>
   </div>
   <div class="header-nav">
     <ul class="header-list">
@@ -14,6 +14,7 @@
         <% if user_signed_in? %>
           <li class="header-list-item">
             <%= link_to @user.name, user_path(@user), class: "user-name" %>
+            <%= image_tag @user.image, class: "header-user-image" %>
           </li>
           <li class="header-list-item">
             <%= link_to "ログアウト", destroy_user_session_path, data: {turbo_method: :delete}, class: "logout btn" %>

@@ -35,6 +35,14 @@
   margin-right: 20px;
 }
 
+.header-user-image {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  border: gray 4px solid;
+  object-fit: cover;
+}
+
 .user-name {
   font-weight: bold;
   color: black;
