@@ -1,23 +1,5 @@
-<header class="header">
-  <div class="header-logo">
-    <%= image_tag "aleitu-logo.png", class: "header-logo-pict" %>
-  </div>
-  <div class="header-nav">
-    <ul class="header-list">
-      <li class="header-list-item">dammy</li>
-      <li class="header-list-item">dammy</li>
-      <li class="header-list-item">dammy</li>
-    </ul>
-    <div class="header-right-wrapper">
-      <ul class="header-list">
-        <li class="header-list-item">ルーム名ダミー</li>
-        <li class="header-list-item">ユーザー名ダミー</li>
-        <li class="header-list-item">ログアウトボタン</li>
-      </ul>
-    </div>
-  </div>
-</header>
-<div class="main">
+<%= render "shared/header" %>
+<div class="root-main">
   <div class="top-wrapper">
     <%= image_tag "aleitu-hero.jpg", class: "top-hero-pict" %>
   </div>
@@ -67,6 +49,4 @@
     dammy
   </div>
 </div>
-<footer class="footer">
-  <p>Now development... by MOTOKESHI</p>
-</footer>
+<%= render "shared/footer" %>

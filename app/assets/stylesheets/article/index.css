@@ -1,53 +1,7 @@
-.header {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: fixed;
-  left: 0px;
-  top: 0px;
-  width: calc(100vw - 60px);
-  margin: 0 30px;
-  height: 100px;
-  background-color: #fff;
-  box-shadow: 0px 0px 30px 30px #fff;
-}
-
-.header-logo {
-  width: 300px;
-}
-
-.header-nav {
-  width: calc(100% - 300px);
-  display: flex;
-  justify-content: space-between;
-}
-
-.header-logo-pict {
-  height: 100px;
-  margin-top: 5px;
-}
-
-.header-list {
-  display: flex;
-}
-
-.header-list-item {
-  margin-right: 20px;
-}
-
-.main {
+.root-main {
   background-color: #fff;
   width: calc(100vw - 60px);
   margin: 0 30px;
-}
-
-.footer{
-  height: 40px;
-  margin-top: 30px;
-  background-color: gray;
-  color: #fff;
-  text-align: center;
-  line-height: 40px;
 }
 
 .top-wrapper {
@@ -111,18 +65,10 @@
   display: flex;
 }
 
-.btn {
-  margin: 0 5px;
-  border-radius: 5px;
-  padding: 1px;
-  font-size: 18px;
-  text-decoration: none;
-  font-weight: bold;
-}
-
 .completion {
   border: red 1px solid;
   color: red;
+  font-size: 18px;
 }
 
 .completion:hover {
@@ -133,6 +79,7 @@
 .skip {
   border: blue solid 1px;
   color: blue;
+  font-size: 18px;
 }
 
 .skip:hover {
