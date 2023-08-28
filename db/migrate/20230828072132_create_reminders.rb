@@ -4,10 +4,10 @@ class CreateReminders < ActiveRecord::Migration[7.0]
       t.string      :title,           null: false
       t.integer     :genre_id
       t.text        :outline
-      t.date        :frequency_year
-      t.date        :frequency_month
-      t.date        :frequency_week
-      t.date        :frequency_day
+      t.integer     :frequency_year
+      t.integer     :frequency_month
+      t.integer     :frequency_week
+      t.integer     :frequency_day
       t.references  :user,            foreign_key: true
       t.timestamps
     end

@@ -43,10 +43,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_28_072132) do
     t.string "title", null: false
     t.integer "genre_id"
     t.text "outline"
-    t.date "frequency_year"
-    t.date "frequency_month"
-    t.date "frequency_week"
-    t.date "frequency_day"
+    t.integer "frequency_year"
+    t.integer "frequency_month"
+    t.integer "frequency_week"
+    t.integer "frequency_day"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
