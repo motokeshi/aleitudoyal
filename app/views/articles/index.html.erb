@@ -9,7 +9,7 @@
         <h2 class="wrapper-title">Reminders</h2>
         <p class="wrapper-subtitle">直近のリマインダー</p>
         <ul>
-          <% @user.reminders.each do |reminder|%>
+          <% @reminders.each do |reminder|%>
             <% next_schedule = reminder.next_schedule_calculation(reminder.schedule, reminder.frequency_year, reminder.frequency_month, reminder.frequency_week, reminder.frequency_day) %>
             <% if next_schedule <= (Date.today >> 1) %>
               <li class="left-wrapper-list-item">
@@ -19,7 +19,7 @@
                       <%= reminder.schedule %>
                     </div>
                     <div class="remind-title">
-                      <%= reminder.title %>
+                      <%= link_to reminder.title, user_reminder_path(reminder.user, reminder.id) %>
                     </div>
                   </div>
                   <div class="list-item-right-inner">

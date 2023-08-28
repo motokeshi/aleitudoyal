@@ -1,9 +1,9 @@
 <%= render "shared/header" %>
   <div class="main">
     <h2 class="wrapper-title">Reminders</h2>
-    <p class="wrapper-subtitle">リマインダー一覧</p>
+    <p class="wrapper-subtitle"><%= @user.name %>さんのリマインダー一覧</p>
     <ul>
-      <% @user.reminders.each do |reminder|%>
+      <% @reminders.each do |reminder|%>
         <% next_schedule = reminder.next_schedule_calculation(reminder.schedule, reminder.frequency_year, reminder.frequency_month, reminder.frequency_week, reminder.frequency_day) %>
         <li class="left-wrapper-list-item">
           <div class="list-item-contents">
@@ -12,7 +12,7 @@
                 <%= reminder.schedule %>
               </div>
               <div class="remind-title">
-                <%= reminder.title %>
+                <%= link_to reminder.title, user_reminder_path(reminder.user, reminder.id) %>
               </div>
             </div>
             <div class="list-item-right-inner">
