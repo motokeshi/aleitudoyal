@@ -6,32 +6,33 @@
   <% if user_signed_in? %>
     <div class="center-container">
       <div class="center-left-wrapper">
-        <h2 class="wrapper-title">Reminds</h2>
-        <p class="wrapper-subtitle">リマインド一覧</p>
+        <h2 class="wrapper-title">Reminders</h2>
+        <p class="wrapper-subtitle">直近のリマインダー</p>
         <ul>
-          <li class="left-wrapper-list-item">
-            <div class="list-item-contents">
-              <div class="list-item-left-inner">
-                <div class="remind-date">
-                  1月1日
+          <% @user.reminders.each do |reminder|%>
+            <% next_schedule = reminder.next_schedule_calculation(reminder.schedule, reminder.frequency_year, reminder.frequency_month, reminder.frequency_week, reminder.frequency_day) %>
+            <% if next_schedule <= (Date.today >> 1) %>
+              <li class="left-wrapper-list-item">
+                <div class="list-item-contents">
+                  <div class="list-item-left-inner">
+                    <div class="remind-date">
+                      <%= reminder.schedule %>
+                    </div>
+                    <div class="remind-title">
+                      <%= reminder.title %>
+                    </div>
+                  </div>
+                  <div class="list-item-right-inner">
+                    <div class="remind-next-schedule">
+                        <%= next_schedule %>
+                    </div>
+                    <%= link_to "完了", "#", class: "completion btn" %>
+                    <%= link_to "skip", "#", class: "skip btn" %>
+                  </div>
                 </div>
-                <div class="remind-title">
-                  ダミースケジュール
-                </div>
-              </div>
-              <div class="list-item-right-inner">
-                <div class="remind-next-schedule">
-                  次回:2月1日
-                </div>
-                <%= link_to "完了", "#", class: "completion btn" %>
-                <%= link_to "skip", "#", class: "skip btn" %>
-              </div>
-            </div>
-          </li>
-          <li>dammy</li>
-          <li>dammy</li>
-          <li>dammy</li>
-          <li>リマインド一覧ページへ移動</li>
+              </li>
+            <% end %>
+          <% end %>
         </ul>
       </div>
       <div class="center-right-wrapper">
