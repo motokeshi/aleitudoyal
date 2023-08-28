@@ -1,6 +1,11 @@
 class RemindersController < ApplicationController
   def index
     @user = current_user
+    @reminders = @user.reminders.order(:schedule)
+  end
+
+  def show
+    @reminder = Reminder.find(params[:id])
   end
 
   def new

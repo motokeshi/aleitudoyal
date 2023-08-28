@@ -1,0 +1,39 @@
+<%= render "shared/header" %>
+<div class="main">
+  <div class="main-wrapper">
+    <h1 class="wrapper-title">Reminder Detail</h1>
+    <p class="wrapper-subtitle">リマインダー詳細</p>
+    <div class="main-contents">
+      <ul>
+        <% if @reminder.image.present? %>
+          <%= image_tag @reminder.image, class:"main-user-img" %>
+        <% else %>
+          <%= image_tag "no-image.jpg", class:"main-user-img" %>
+        <% end %>
+        <li class="main-list-item">
+          タイトル : <%= @reminder.title %>
+        </li>
+        <li class="main-list-item">
+          実施予定日 : <%= @reminder.schedule %>
+        </li>
+        <li class="main-list-item">
+          ジャンル : <% if @reminder.genre.present? %><%= @reminder.genre.name %><% end %>
+        </li>
+        <li class="main-list-item">
+          概要 : <%= @reminder.outline %>
+        </li>
+        <li class="main-list-item">
+          次回の予定 : <%= @reminder.next_schedule_calculation(@reminder.schedule, @reminder.frequency_year, @reminder.frequency_month, @reminder.frequency_week, @reminder.frequency_day) %>
+        </li>
+        <%= link_to "完了", "#", class: "completion btn" %>
+        <%= link_to "skip", "#", class: "skip btn" %>
+        <%= link_to "削除", "#", class: "delete btn" %>
+      </ul>
+      <% if user_signed_in? && @user == current_user %>
+        <%= link_to "ユーザー情報編集", edit_user_path(@user), class: "btn" %>
+        <%= link_to "！ユーザー削除！", "#", data: { turbo_method: :delete }, class: "btn" %>
+      <% end %>
+    </div>
+  </div>
+</div>
+<%= render "shared/footer" %>
