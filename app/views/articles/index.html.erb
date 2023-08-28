@@ -3,45 +3,50 @@
   <div class="top-wrapper">
     <%= image_tag "aleitu-hero.jpg", class: "top-hero-pict" %>
   </div>
-  <div class="center-container">
-    <div class="center-left-wrapper">
-      <h2 class="wrapper-title">Reminds</h2>
-      <p class="wrapper-subtitle">リマインド一覧</p>
-      <ul>
-        <li class="left-wrapper-list-item">
-          <div class="list-item-contents">
-            <div class="list-item-left-inner">
-              <div class="remind-date">
-                1月1日
+  <% if user_signed_in? %>
+    <div class="center-container">
+      <div class="center-left-wrapper">
+        <h2 class="wrapper-title">Reminds</h2>
+        <p class="wrapper-subtitle">リマインド一覧</p>
+        <ul>
+          <li class="left-wrapper-list-item">
+            <div class="list-item-contents">
+              <div class="list-item-left-inner">
+                <div class="remind-date">
+                  1月1日
+                </div>
+                <div class="remind-title">
+                  ダミースケジュール
+                </div>
               </div>
-              <div class="remind-title">
-                ダミースケジュール
+              <div class="list-item-right-inner">
+                <div class="remind-next-schedule">
+                  次回:2月1日
+                </div>
+                <%= link_to "完了", "#", class: "completion btn" %>
+                <%= link_to "skip", "#", class: "skip btn" %>
               </div>
             </div>
-            <div class="list-item-right-inner">
-              <div class="remind-next-schedule">
-                次回:2月1日
-              </div>
-              <%= link_to "完了", "#", class: "completion btn" %>
-              <%= link_to "skip", "#", class: "skip btn" %>
-            </div>
-          </div>
-        </li>
-        <li>dammy</li>
-        <li>dammy</li>
-        <li>dammy</li>
-        <li>リマインド一覧ページへ移動</li>
-      </ul>
-    </div>
-    <div class="center-right-wrapper">
-      <div class="right-contents-outer">
-        btn area
+          </li>
+          <li>dammy</li>
+          <li>dammy</li>
+          <li>dammy</li>
+          <li>リマインド一覧ページへ移動</li>
+        </ul>
       </div>
-      <div class="right-contents-outer">
-        follow list area
+      <div class="center-right-wrapper">
+        <div class="right-contents-outer">
+            <%= link_to "リマインダー登録", new_user_reminder_path(@user), class: "btn" %><br>
+            <%= link_to "リマインダー一覧", "#", class: "btn" %><br>
+            <%= link_to "記事新規投稿", "#", class: "btn" %><br>
+            <%= link_to "マイ記事一覧", "#", class: "btn" %>
+        </div>
+        <div class="right-contents-outer">
+          follow list area
+        </div>
       </div>
     </div>
-  </div>
+  <% end %>
   <div class="bottom-wrapper">
     <h2 class="wrapper-title">Recent Articles</h2>
     <p class="wrapper-subtitle">最近の投稿一覧</p>
