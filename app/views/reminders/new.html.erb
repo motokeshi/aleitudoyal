@@ -25,10 +25,14 @@
       </div>
       <div class="frequency-date-group">
         <label class="form-text">リマインドの頻度</label>
-        <%= f.number_field :frequency_year, min: 0 %>年<br>
-        <%= f.number_field :frequency_month, min: 0 %>月<br>
-        <%= f.number_field :frequency_week, min: 0 %>週<br>
-        <%= f.number_field :frequency_day, min: 0 %>日<br>
+        <%= f.number_field :frequency_year, min: 0, value: 0 %>年<br>
+        <%= f.number_field :frequency_month, min: 0, value: 0 %>月<br>
+        <%= f.number_field :frequency_week, min: 0, value: 0 %>週<br>
+        <%= f.number_field :frequency_day, min: 0, value: 0 %>日<br>
+      </div>
+      <div class="form-group">
+        <label class="form-text">初回リマインド予定</label>
+        <%= f.date_field :schedule, class:"input-default", id:"schedule" %>
       </div>
       <%= link_to "キャンセル", root_path, class: "btn" %>
       <%= f.submit "Create Reminder!" ,class:"btn" %>

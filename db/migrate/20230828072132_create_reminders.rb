@@ -8,6 +8,7 @@ class CreateReminders < ActiveRecord::Migration[7.0]
       t.integer     :frequency_month
       t.integer     :frequency_week
       t.integer     :frequency_day
+      t.date        :schedule,        null: false
       t.references  :user,            foreign_key: true
       t.timestamps
     end

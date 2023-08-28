@@ -47,6 +47,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_28_072132) do
     t.integer "frequency_month"
     t.integer "frequency_week"
     t.integer "frequency_day"
+    t.date "schedule", null: false
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
