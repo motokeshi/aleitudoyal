@@ -1,4 +1,8 @@
 class RemindersController < ApplicationController
+  def index
+    @user = current_user
+  end
+
   def new
     @reminder = Reminder.new
   end

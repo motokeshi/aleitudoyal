@@ -38,7 +38,7 @@
       <div class="center-right-wrapper">
         <div class="right-contents-outer">
             <%= link_to "リマインダー登録", new_user_reminder_path(@user), class: "btn" %><br>
-            <%= link_to "リマインダー一覧", "#", class: "btn" %><br>
+            <%= link_to "リマインダー一覧", user_reminders_path(@user), class: "btn" %><br>
             <%= link_to "記事新規投稿", "#", class: "btn" %><br>
             <%= link_to "マイ記事一覧", "#", class: "btn" %>
         </div>
