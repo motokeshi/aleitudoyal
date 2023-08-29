@@ -25,8 +25,10 @@
                     <div class="remind-next-schedule">
                       <%= next_schedule = reminder.next_schedule_calculation(reminder.schedule, reminder.frequency_year, reminder.frequency_month, reminder.frequency_week, reminder.frequency_day) %>
                     </div>
-                    <%= link_to "完了", "#", class: "completion btn" %>
-                    <%= link_to "skip", "#", class: "skip btn" %>
+                    <% unless reminder.records.exists?(implementation_record: Date.today, reminder_id: reminder.id) %>
+                      <%= link_to "完了", reminder_records_path(reminder, root: true), data: { turbo_method: :post }, class: "completion btn" %>
+                      <%= link_to "skip", "#", class: "skip btn" %>
+                    <% end %>
                   </div>
                 </div>
               </li>
