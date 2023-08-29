@@ -27,7 +27,7 @@
                     </div>
                     <% unless reminder.records.exists?(implementation_record: Date.today, reminder_id: reminder.id) %>
                       <%= link_to "完了", reminder_records_path(reminder, root: true), data: { turbo_method: :post }, class: "completion btn" %>
-                      <%= link_to "skip", "#", class: "skip btn" %>
+                      <%= link_to "skip", reminder_records_path(reminder, root: true, skip: true), data: { turbo_method: :post }, class: "skip btn" %>
                     <% end %>
                   </div>
                 </div>
