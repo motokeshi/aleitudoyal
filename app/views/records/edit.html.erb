@@ -2,6 +2,7 @@
 <div class="main">
   <h1>Record Editer</h1>
   <p class="wrapper-subtitle">レコード編集ページ</p>
+  <%= link_to "履歴を削除", reminder_record_path(@reminder, @record), data: { turbo_method: :delete}, class:"btn" %>
   <div class='form-wrap'>
     <%= form_with model: [@reminder, @record], local: true do |f| %>
 

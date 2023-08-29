@@ -22,8 +22,16 @@ class RecordsController < ApplicationController
 
   def update
     record = Record.find(params[:id])
-    binding.pry
     if record.update(params.require(:record).permit(:implementation_record).merge(reminder_id: params[:reminder_id]))
+      redirect_to reminder_path(params[:reminder_id])
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
+  def destroy
+    record = Record.find(params[:id])
+    if record.destroy
       redirect_to reminder_path(params[:reminder_id])
     else
       render :edit, status: :unprocessable_entity
