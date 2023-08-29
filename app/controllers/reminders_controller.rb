@@ -36,6 +36,15 @@ class RemindersController < ApplicationController
     end
   end
 
+  def destroy
+    @reminder = Reminder.find(params[:id])
+    if @reminder.destroy
+      redirect_to user_reminders_path
+    else
+      render :show, status: :unprocessable_entity
+    end
+  end
+
   private
   def reminder_params
     params.require(:reminder).permit(:image, :title, :genre_id, :outline, :frequency_year, :frequency_month, :frequency_week, :frequency_day, :schedule).merge(user_id: params[:user_id])

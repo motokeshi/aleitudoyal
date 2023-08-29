@@ -28,7 +28,7 @@
         <%= link_to "完了", "#", class: "completion btn" %>
         <%= link_to "skip", "#", class: "skip btn" %>
         <%= link_to "編集", edit_user_reminder_path(@user, @reminder), class: "edit btn"%>
-        <%= link_to "削除", "#", class: "delete btn" %>
+        <%= link_to "削除", user_reminder_path(@user, @reminder), data: { turbo_method: :delete }, class: "delete btn" %>
       </ul>
     </div>
   </div>
