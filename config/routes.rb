@@ -8,4 +8,5 @@ Rails.application.routes.draw do
   resources :reminders do
     resources :records, only: [:create, :edit, :update, :destroy]
   end
+  resources :articles
 end

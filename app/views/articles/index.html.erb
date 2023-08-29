@@ -40,7 +40,7 @@
         <div class="right-contents-outer">
             <%= link_to "リマインダー登録", new_reminder_path, class: "btn" %><br>
             <%= link_to "リマインダー一覧", reminders_path, class: "btn" %><br>
-            <%= link_to "記事新規投稿", "#", class: "btn" %><br>
+            <%= link_to "記事新規投稿", new_article_path, class: "btn" %><br>
             <%= link_to "マイ記事一覧", "#", class: "btn" %>
         </div>
         <div class="right-contents-outer">
@@ -52,8 +52,18 @@
   <div class="bottom-wrapper">
     <h2 class="wrapper-title">Recent Articles</h2>
     <p class="wrapper-subtitle">最近の投稿一覧</p>
-    dammy
-    dammy
+    <% @articles.each do |article| %>
+      <% if article.release %>
+        <div>
+          <div>
+            <%= article.title %>
+          </div>
+          <div>
+            <%= article.updated_at %>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
   </div>
 </div>
 <%= render "shared/footer" %>
