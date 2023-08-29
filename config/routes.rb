@@ -5,5 +5,7 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root "articles#index"
   resources :users, only: [:show, :edit, :update, :destroy]
-  resources :reminders
+  resources :reminders do
+    resources :records, only: [:create]
+  end
 end
