@@ -1,6 +1,8 @@
 class Article < ApplicationRecord
   belongs_to :user
-  belongs_to :reminder
-  belongs_to :genre
   has_one_attached :image, dependent: :destroy
+
+  extend ActiveHash::Associations::ActiveRecordExtensions
+  belongs_to :genre
+
 end

@@ -5,7 +5,6 @@ class CreateArticles < ActiveRecord::Migration[7.0]
       t.integer     :genre_id
       t.boolean     :release,   null: false,    default: false
       t.references  :user,      null: false,    foreign_key: true
-      t.references  :reminder,                  foreign_key: true
       t.timestamps
     end
   end

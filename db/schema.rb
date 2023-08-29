@@ -44,10 +44,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_29_123511) do
     t.integer "genre_id"
     t.boolean "release", default: false, null: false
     t.bigint "user_id", null: false
-    t.bigint "reminder_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["reminder_id"], name: "index_articles_on_reminder_id"
     t.index ["user_id"], name: "index_articles_on_user_id"
   end
 
@@ -93,7 +91,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_29_123511) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "articles", "reminders"
   add_foreign_key "articles", "users"
   add_foreign_key "records", "reminders"
   add_foreign_key "reminders", "users"
