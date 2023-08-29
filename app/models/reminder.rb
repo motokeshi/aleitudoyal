@@ -1,6 +1,7 @@
 class Reminder < ApplicationRecord
   belongs_to :user
   has_many :records
+  has_one :article
   has_one_attached :image, dependent: :destroy
 
   extend ActiveHash::Associations::ActiveRecordExtensions
