@@ -34,7 +34,8 @@
       </ul>
       実施履歴:
       <% @records.each do |record| %>
-        <%= record.implementation_record %><br>
+        <%= record.implementation_record %>
+        <%= link_to "編集", edit_reminder_record_path(@reminder, record), class:"btn" %><br>
       <% end %>
     </div>
   </div>

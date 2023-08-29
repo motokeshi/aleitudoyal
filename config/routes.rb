@@ -6,6 +6,6 @@ Rails.application.routes.draw do
   root "articles#index"
   resources :users, only: [:show, :edit, :update, :destroy]
   resources :reminders do
-    resources :records, only: [:create]
+    resources :records, only: [:create, :edit, :update]
   end
 end

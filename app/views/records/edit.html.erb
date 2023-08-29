@@ -1,0 +1,19 @@
+<%= render "shared/header" %>
+<div class="main">
+  <h1>Record Editer</h1>
+  <p class="wrapper-subtitle">レコード編集ページ</p>
+  <div class='form-wrap'>
+    <%= form_with model: [@reminder, @record], local: true do |f| %>
+
+      <%= render 'shared/error_messages', model: f.object %>
+
+      <div class="form-group">
+        <label class="form-text">実施履歴</label>
+        <%= f.date_field :implementation_record, class:"input-default", id:"implementation_record" %>
+      </div>
+      <%= link_to "キャンセル", :back, class: "btn" %>
+      <%= f.submit "Edit Record!" ,class:"btn" %>
+    <% end %>
+  </div>
+</div>
+<%= render "shared/footer" %>
