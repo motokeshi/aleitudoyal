@@ -5,5 +5,5 @@ class Genre < ActiveHash::Base
     { id: 7, name: 'PC・スマホ' }, { id: 8, name: 'その他' }, { id: 9, name: 'DIY' }
   ]
   include ActiveHash::Associations
-  has_many :user
+  has_many :user, :reminder
 end

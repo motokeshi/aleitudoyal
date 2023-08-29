@@ -1,0 +1,43 @@
+<%= render "shared/header" %>
+<div class="main">
+  <div class="main-wrapper">
+    <h1 class="wrapper-title">Reminder Detail</h1>
+    <p class="wrapper-subtitle">リマインダー詳細</p>
+    <div class="main-contents">
+      <ul>
+        <% if @reminder.image.present? %>
+          <%= image_tag @reminder.image, class:"main-user-img" %>
+        <% else %>
+          <%= image_tag "no-image.jpg", class:"main-user-img" %>
+        <% end %>
+        <li class="main-list-item">
+          タイトル : <%= @reminder.title %>
+        </li>
+        <li class="main-list-item">
+          実施予定日 : <%= @reminder.schedule %>
+        </li>
+        <li class="main-list-item">
+          ジャンル : <% if @reminder.genre.present? %><%= @reminder.genre.name %><% end %>
+        </li>
+        <li class="main-list-item">
+          概要 : <%= @reminder.outline %>
+        </li>
+        <li class="main-list-item">
+          次回の予定 : <%= @reminder.next_schedule_calculation(@reminder.schedule, @reminder.frequency_year, @reminder.frequency_month, @reminder.frequency_week, @reminder.frequency_day) %>
+        </li>
+        <% unless @reminder.records.exists?(implementation_record: Date.today, reminder_id: @reminder.id) %>
+          <%= link_to "完了", reminder_records_path(@reminder), data: { turbo_method: :post }, class: "completion btn" %>
+          <%= link_to "skip", reminder_records_path(@reminder, skip: true), data: { turbo_method: :post }, class: "skip btn" %>
+        <% end %>
+        <%= link_to "編集", edit_reminder_path(@reminder), class: "edit btn"%>
+        <%= link_to "削除", reminder_path(@reminder), data: { turbo_method: :delete }, class: "delete btn" %>
+      </ul>
+      実施履歴:
+      <% @records.each do |record| %>
+        <%= record.implementation_record %>
+        <%= link_to "編集", edit_reminder_record_path(@reminder, record), class:"btn" %><br>
+      <% end %>
+    </div>
+  </div>
+</div>
+<%= render "shared/footer" %>

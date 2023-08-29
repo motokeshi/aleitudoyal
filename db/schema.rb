@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_25_091931) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_29_043853) do
   create_table "active_storage_attachments", charset: "utf8", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -39,6 +39,29 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_25_091931) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "records", charset: "utf8", force: :cascade do |t|
+    t.date "implementation_record", null: false
+    t.bigint "reminder_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["reminder_id"], name: "index_records_on_reminder_id"
+  end
+
+  create_table "reminders", charset: "utf8", force: :cascade do |t|
+    t.string "title", null: false
+    t.integer "genre_id"
+    t.text "outline"
+    t.integer "frequency_year"
+    t.integer "frequency_month"
+    t.integer "frequency_week"
+    t.integer "frequency_day"
+    t.date "schedule", null: false
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_reminders_on_user_id"
+  end
+
   create_table "users", charset: "utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -58,4 +81,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_25_091931) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "records", "reminders"
+  add_foreign_key "reminders", "users"
 end
