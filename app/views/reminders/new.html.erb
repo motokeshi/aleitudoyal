@@ -1,9 +1,9 @@
 <%= render "shared/header" %>
 <div class="main">
-  <h1>New Reminder Editer</h1>
+  <h1 class="wrapper-title">New Reminder Editer</h1>
   <p class="wrapper-subtitle">リマインダー新規登録ページ</p>
   <div class='form-wrap'>
-    <%= form_with model: @reminder, url: user_reminders_path, local: true do |f| %>
+    <%= form_with model: @reminder, local: true do |f| %>
 
       <%= render 'shared/error_messages', model: f.object %>
 
@@ -34,7 +34,7 @@
         <label class="form-text">初回リマインド予定</label>
         <%= f.date_field :schedule, class:"input-default", id:"schedule" %>
       </div>
-      <%= link_to "キャンセル", root_path, class: "btn" %>
+      <%= link_to "キャンセル", reminders_path, class: "btn" %>
       <%= f.submit "Create Reminder!" ,class:"btn" %>
     <% end %>
   </div>

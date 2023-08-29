@@ -12,7 +12,7 @@
                 <%= reminder.schedule %>
               </div>
               <div class="remind-title">
-                <%= link_to reminder.title, user_reminder_path(reminder.user, reminder.id) %>
+                <%= link_to reminder.title, reminder_path(reminder) %>
               </div>
             </div>
             <div class="list-item-right-inner">
@@ -26,5 +26,6 @@
         </li>
       <% end %>
     </ul>
+    <%= link_to "新しいリマインダーを作成", new_reminder_path, class: "btn" %>
   </div>
 <%= render "shared/footer" %>

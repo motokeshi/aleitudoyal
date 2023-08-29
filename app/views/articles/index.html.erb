@@ -18,7 +18,7 @@
                       <%= reminder.schedule %>
                     </div>
                     <div class="remind-title">
-                      <%= link_to reminder.title, user_reminder_path(reminder.user, reminder.id) %>
+                      <%= link_to reminder.title, reminder_path(reminder) %>
                     </div>
                   </div>
                   <div class="list-item-right-inner">
@@ -36,8 +36,8 @@
       </div>
       <div class="center-right-wrapper">
         <div class="right-contents-outer">
-            <%= link_to "リマインダー登録", new_user_reminder_path(@user), class: "btn" %><br>
-            <%= link_to "リマインダー一覧", user_reminders_path(@user), class: "btn" %><br>
+            <%= link_to "リマインダー登録", new_reminder_path, class: "btn" %><br>
+            <%= link_to "リマインダー一覧", reminders_path, class: "btn" %><br>
             <%= link_to "記事新規投稿", "#", class: "btn" %><br>
             <%= link_to "マイ記事一覧", "#", class: "btn" %>
         </div>

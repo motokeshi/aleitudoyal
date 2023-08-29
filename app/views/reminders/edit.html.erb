@@ -3,7 +3,7 @@
   <h1>Reminder Detail Editer</h1>
   <p class="wrapper-subtitle">リマインダー編集ページ</p>
   <div class='form-wrap'>
-    <%= form_with model: [@user, @reminder], local: true do |f| %>
+    <%= form_with model: @reminder, local: true do |f| %>
 
       <%= render 'shared/error_messages', model: f.object %>
 
@@ -34,7 +34,7 @@
         <label class="form-text">次回リマインド予定</label>
         <%= f.date_field :schedule, class:"input-default", id:"schedule" %>
       </div>
-      <%= link_to "キャンセル", root_path, class: "btn" %>
+      <%= link_to "キャンセル", reminders_path, class: "btn" %>
       <%= f.submit "Edit Reminder!" ,class:"btn" %>
     <% end %>
   </div>
