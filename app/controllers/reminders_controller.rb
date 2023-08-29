@@ -5,6 +5,7 @@ class RemindersController < ApplicationController
   end
 
   def show
+    @user = current_user
     @reminder = Reminder.find(params[:id])
   end
 
@@ -18,6 +19,20 @@ class RemindersController < ApplicationController
       redirect_to root_path
     else
       render :new, status: :unprocessable_entity
+    end
+  end
+
+  def edit
+    @user = current_user
+    @reminder = Reminder.find(params[:id])
+  end
+
+  def update
+    @reminder = Reminder.find(params[:id])
+    if @reminder.update(reminder_params)
+      redirect_to user_reminders_path
+    else
+      render :edit, status: :unprocessable_entity
     end
   end
 

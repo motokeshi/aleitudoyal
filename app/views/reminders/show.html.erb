@@ -27,12 +27,9 @@
         </li>
         <%= link_to "完了", "#", class: "completion btn" %>
         <%= link_to "skip", "#", class: "skip btn" %>
+        <%= link_to "編集", edit_user_reminder_path(@user, @reminder), class: "edit btn"%>
         <%= link_to "削除", "#", class: "delete btn" %>
       </ul>
-      <% if user_signed_in? && @user == current_user %>
-        <%= link_to "ユーザー情報編集", edit_user_path(@user), class: "btn" %>
-        <%= link_to "！ユーザー削除！", "#", data: { turbo_method: :delete }, class: "btn" %>
-      <% end %>
     </div>
   </div>
 </div>
