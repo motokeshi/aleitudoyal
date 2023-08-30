@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_30_063143) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_30_131535) do
   create_table "active_storage_attachments", charset: "utf8", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -75,6 +75,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_30_063143) do
     t.index ["reminder_id"], name: "index_records_on_reminder_id"
   end
 
+  create_table "reminder_articles", charset: "utf8", force: :cascade do |t|
+    t.bigint "reminder_id"
+    t.bigint "article_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["article_id"], name: "index_reminder_articles_on_article_id"
+    t.index ["reminder_id"], name: "index_reminder_articles_on_reminder_id"
+  end
+
   create_table "reminders", charset: "utf8", force: :cascade do |t|
     t.string "title", null: false
     t.integer "genre_id"
@@ -113,5 +122,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_30_063143) do
   add_foreign_key "comments", "articles"
   add_foreign_key "comments", "users"
   add_foreign_key "records", "reminders"
+  add_foreign_key "reminder_articles", "articles"
+  add_foreign_key "reminder_articles", "reminders"
   add_foreign_key "reminders", "users"
 end

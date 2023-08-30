@@ -1,0 +1,2 @@
+class ReminderArticle < ApplicationRecord
+end
