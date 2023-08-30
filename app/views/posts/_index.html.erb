@@ -4,6 +4,6 @@
       <%= image_tag post.image %><br>
     <% end %>
     <%= post.text %>
-    <%= link_to "編集", "#", class:"btn" %><br>
+    <%= link_to "編集", edit_article_post_path(@article, post), class:"btn" %><br>
   <% end %>
 <% end %>
