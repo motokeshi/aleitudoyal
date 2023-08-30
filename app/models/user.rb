@@ -7,6 +7,7 @@ class User < ApplicationRecord
 
   has_many :reminders
   has_many :article
+  has_many :comments
   has_one_attached :image, dependent: :destroy
 
   extend ActiveHash::Associations::ActiveRecordExtensions
