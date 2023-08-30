@@ -7,14 +7,19 @@ class ArticlesController < ApplicationController
     @articles = Article.order(updated_at: :desc).includes(:user)
   end
 
+  def show
+    @article = Article.find(params[:id])
+    @posts = @article.posts
+  end
+
   def new
     @article = Article.new
   end
 
   def create
-    @article = Article.new(article_params)
-    if @article.save
-      redirect_to root_path
+    article = Article.new(article_params)
+    if article.save
+      redirect_to new_article_post_path(article)
     else
       render :new, status: :unprocessable_entity
     end

@@ -1,0 +1,7 @@
+<% unless @posts == nil %>
+  <% @posts.each do |post| %>
+    <%= post.image %><br>
+    <%= post.text %><br>
+    <%= link_to "編集", "#", class:"btn" %><br>
+  <% end %>
+<% end %>

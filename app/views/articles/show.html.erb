@@ -1,0 +1,26 @@
+<%= render "shared/header" %>
+<div class="main">
+  <div class="main-wrapper">
+    <h1 class="wrapper-title">Article Detail</h1>
+    <p class="wrapper-subtitle">投稿記事詳細</p>
+    <div class="main-contents">
+      <ul>
+        <% if @article.image.present? %>
+          <%= image_tag @article.image, class:"main-user-img" %>
+        <% else %>
+          <%= image_tag "no-image.jpg", class:"main-user-img" %>
+        <% end %>
+        <li class="main-list-item">
+          タイトル : <%= @article.title %>
+        </li>
+        <li class="main-list-item">
+          ジャンル : <% if @article.genre.present? %><%= @article.genre.name %><% end %>
+        </li>
+        <%= link_to "編集", "#", class: "edit btn"%>
+        <%#= link_to "削除", "#", data: { turbo_method: :delete }, class: "delete btn" %>
+      </ul>
+      <%= render "posts/index" %>
+    </div>
+  </div>
+</div>
+<%= render "shared/footer" %>
