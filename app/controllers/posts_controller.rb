@@ -6,7 +6,7 @@ class PostsController < ApplicationController
   end
 
   def create
-    post = Post.new(params.require(:post).permit(:text).merge(article_id: params[:article_id]))
+    post = Post.new(params.require(:post).permit(:image, :text).merge(article_id: params[:article_id]))
     if post.save
       redirect_to new_article_post_path(params[:article_id])
     else
