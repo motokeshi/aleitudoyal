@@ -1,5 +1,5 @@
 class RemindersController < ApplicationController
-  before_action :set_reminder, only: [:show, :edit, :update, :destroy]
+  before_action :set_reminder, only: [:show, :edit, :update, :destroy, :search]
 
   def index
     @user = current_user
@@ -40,6 +40,10 @@ class RemindersController < ApplicationController
     else
       render :show, status: :unprocessable_entity
     end
+  end
+
+  def search
+    @articles = Article.search(params[:keyword])
   end
 
   private

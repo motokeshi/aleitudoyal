@@ -7,6 +7,9 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :edit, :update, :destroy]
   resources :reminders do
     resources :records, only: [:create, :edit, :update, :destroy]
+    member do
+      get 'search'
+    end
   end
   resources :articles do
     resources :posts

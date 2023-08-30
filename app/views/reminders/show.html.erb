@@ -38,6 +38,8 @@
         <%= link_to "編集", edit_reminder_record_path(@reminder, record), class:"btn" %><br>
       <% end %>
     </div>
+    <p class="wrapper-subtitle">Article設定</p>
+    <%= link_to "article設定ページへ移動", search_reminder_path(@reminder) %>
   </div>
 </div>
 <%= render "shared/footer" %>
