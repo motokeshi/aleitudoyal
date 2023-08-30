@@ -20,6 +20,7 @@
         <%#= link_to "削除", "#", data: { turbo_method: :delete }, class: "delete btn" %>
       </ul>
       <%= render "posts/index" %>
+      <%= link_to "内容を追加する", new_article_post_path(@article), class: "btn" %>
     </div>
   </div>
 </div>
