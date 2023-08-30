@@ -23,5 +23,22 @@
       <%= link_to "内容を追加する", new_article_post_path(@article), class: "btn" %>
     </div>
   </div>
+  <div>
+  <% if @comments.present? %>
+    <% @comments.each do |comment| %>
+      <%= comment.text %>
+      <%= comment.user.name %>
+    <% end %>
+  <% end %>
+  <% if user_signed_in? %>
+    <%= form_with model: [@article, @comment], local: true do |f| %>
+      <div>
+        <%= f.text_area :text, placeholder: "コメントを記入してください" %>
+      </div>
+      <div>
+        <%= f.submit "コメント送信" %>
+      </div>
+    <% end %>
+  <% end %>
 </div>
 <%= render "shared/footer" %>

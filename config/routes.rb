@@ -10,5 +10,6 @@ Rails.application.routes.draw do
   end
   resources :articles do
     resources :posts
+    resources :comments, only: :create
   end
 end
