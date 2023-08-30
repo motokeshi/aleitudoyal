@@ -28,9 +28,19 @@ class PostsController < ApplicationController
     end
   end
 
+  def destroy
+    set_post
+    @post.destroy
+    redirect_to article_path(params[:article_id])
+  end
+
   private
 
   def post_params
     params.require(:post).permit(:image, :text).merge(article_id: params[:article_id])
+  end
+
+  def set_post
+    @post = Post.find(params[:id])
   end
 end

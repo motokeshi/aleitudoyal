@@ -4,6 +4,7 @@
       <%= image_tag post.image %><br>
     <% end %>
     <%= post.text %>
-    <%= link_to "編集", edit_article_post_path(@article, post), class:"btn" %><br>
+    <%= link_to "編集", edit_article_post_path(@article, post), class:"btn" %>
+    <%= link_to "削除", article_post_path(@article, post), data: { turbo_method: :delete }, class: "btn" %><br>
   <% end %>
 <% end %>
