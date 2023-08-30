@@ -5,8 +5,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   validates :name, presence: true, uniqueness: true
 
-  has_many :reminders
-  has_many :article
+  has_many :reminders, dependent: :destroy
+  has_many :article , dependent: :destroy
+  has_many :comments, dependent: :destroy
   has_one_attached :image, dependent: :destroy
 
   extend ActiveHash::Associations::ActiveRecordExtensions
