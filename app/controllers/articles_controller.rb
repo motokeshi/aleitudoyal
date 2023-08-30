@@ -38,9 +38,19 @@ class ArticlesController < ApplicationController
     end
   end
 
+  def destroy
+    article_set
+    @article.destroy
+    redirect_to root_path
+  end
+
   private
 
   def article_params
     params.require(:article).permit(:image, :title, :genre_id, :release).merge(user_id: current_user.id)
+  end
+
+  def article_set
+    @article = Article.find(params[:id])
   end
 end
