@@ -1,0 +1,24 @@
+<%= render "shared/header" %>
+<div class="main">
+  <h1 class="wrapper-title"><%= @article.title %></h1>
+  <p class="wrapper-subtitle">投稿内容編集ページ</p>
+  <%= render "index" %>
+  <div class='form-wrap'>
+    <%= form_with model: [@article, @post], local: true do |f| %>
+
+      <%= render 'shared/error_messages', model: f.object %>
+
+      <div class="form-group">
+        <label class="form-text">画像</label>
+        <%= f.file_field :image, class:"post-image", id:"post-image" %>
+      </div>
+      <div class="form-group">
+        <label class="form-text">説明</label>
+        <%= f.text_area :text, class:"input-default", id:"text", placeholder:"説明を記入してください", autofocus: true %>
+      </div>
+      <%= f.submit "Edit Doyal!" ,class: "btn" %>
+    <% end %>
+    <%= link_to "記事詳細ページへ戻る", article_path(@article), class: "btn" %>
+  </div>
+</div>
+<%= render "shared/footer" %>
