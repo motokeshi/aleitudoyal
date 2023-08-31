@@ -2,6 +2,8 @@ class Article < ApplicationRecord
   belongs_to :user
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :reminder, through: :reminder_article
+  has_many :reminder_article
   has_one_attached :image, dependent: :destroy
 
   extend ActiveHash::Associations::ActiveRecordExtensions
