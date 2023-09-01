@@ -39,8 +39,33 @@
       <% end %>
     </div>
     <p class="wrapper-subtitle">Article設定</p>
-    <% @reminder.articles.each do |article| %>
-      <%= article.title %><br>
+    <% @articles.each do |article| %>
+      <div class="main-contents">
+        <ul>
+          <% if article.image.present? %>
+            <%= image_tag article.image, class:"main-user-img" %>
+          <% else %>
+            <%= image_tag "no-image.jpg", class:"main-user-img" %>
+          <% end %>
+          <li class="main-list-item">
+            タイトル : <%= article.title %>
+          </li>
+          <li class="main-list-item">
+            ジャンル : <% if article.genre.present? %><%= article.genre.name %><% end %>
+          </li>
+          <li class="main-list-item">
+            作成者 : <%= article.user.name %>
+          </li>
+          <% if article.user_id == current_user.id %>
+            <%= link_to "編集", edit_article_path(article), class: "edit btn"%>
+            <%= link_to "削除", article_path(article), data: { turbo_method: :delete }, class: "delete btn" %>
+          <% end %>
+        </ul>
+        <%= render partial: "posts/index", locals: { article: article, posts: article.posts } %>
+        <% if article.user_id == current_user.id %>
+          <%= link_to "内容を追加する", new_article_post_path(article), class: "btn" %>
+        <% end %>
+      </div>
     <% end %>
     <%= link_to "article設定ページへ移動", search_reminder_path(@reminder) %>
   </div>

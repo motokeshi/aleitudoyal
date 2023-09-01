@@ -8,6 +8,7 @@ class RemindersController < ApplicationController
 
   def show
     @records = @reminder.records.order(:implementation_record)
+    @articles = @reminder.articles
   end
 
   def new
