@@ -16,5 +16,9 @@ Rails.application.routes.draw do
   resources :articles do
     resources :posts
     resources :comments, only: [:create, :destroy]
+    member do
+      get 'search'
+      post'relation'
+    end
   end
 end

@@ -3,6 +3,9 @@
   <div class="main-wrapper">
     <h1 class="wrapper-title">Article Detail</h1>
     <p class="wrapper-subtitle">投稿記事詳細</p>
+    <div>
+      <%= link_to "この記事をリマインダーと関連付ける", search_article_path(@article) %>
+    </div>
     <div class="main-contents">
       <ul>
         <% if @article.image.present? %>

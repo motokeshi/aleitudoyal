@@ -46,6 +46,17 @@ class ArticlesController < ApplicationController
     redirect_to root_path
   end
 
+  def search
+    article_set
+    @reminders = Reminder.reminders_search(current_user.id, params[:keyword])
+  end
+
+  def relation
+    reminder_article = ReminderArticle.new(reminder_id: params[:reminder_id], article_id: params[:id])
+    reminder_article.save
+    redirect_to article_path(params[:id])
+  end
+
   private
 
   def article_params

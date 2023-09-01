@@ -23,4 +23,12 @@ class Reminder < ApplicationRecord
     end
     return schedule
   end
+
+  def self.reminders_search(user_id, search)
+    if search != ""
+      Reminder.where(user_id: user_id).where('title LIKE(?)', "%#{search}%")
+    else
+      Reminder.where(user_id: user_id)
+    end
+  end
 end
