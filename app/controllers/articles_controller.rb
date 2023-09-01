@@ -58,6 +58,12 @@ class ArticlesController < ApplicationController
     redirect_to article_path(params[:id])
   end
 
+  def cancellation
+    reminder_article = ReminderArticle.find_by(reminder_id: params[:format], article_id: params[:id])
+    reminder_article.destroy
+    redirect_to article_path(params[:id])
+  end
+
   private
 
   def article_params

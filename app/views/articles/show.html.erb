@@ -7,7 +7,8 @@
       <%= link_to "この記事をリマインダーと関連付ける", search_article_path(@article) %><br>
       <% @reminders.each do |reminder| %>
         <% if reminder.user_id == current_user.id%>
-          <%= reminder.title %><br>
+          <%= reminder.title %>
+          <%= button_to "このリマインダーとの関連付けを解除", cancellation_article_path(@article.id, reminder.id), method: "delete" %><br>
         <% end %>
       <% end %>
     </div>

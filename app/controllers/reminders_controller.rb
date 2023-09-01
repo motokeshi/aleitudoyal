@@ -44,7 +44,6 @@ class RemindersController < ApplicationController
   end
 
   def search
-    @user = current_user
     @articles = Article.articles_search(params[:keyword])
   end
 
