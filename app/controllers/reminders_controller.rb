@@ -53,6 +53,12 @@ class RemindersController < ApplicationController
     redirect_to reminder_path(params[:id])
   end
 
+  def cancellation
+    reminder_article = ReminderArticle.find_by(reminder_id: params[:id], article_id: params[:format])
+    reminder_article.destroy
+    redirect_to reminder_path(params[:id])
+  end
+
   private
   def reminder_params
     params.require(:reminder).permit(:image, :title, :genre_id, :outline, :frequency_year, :frequency_month, :frequency_week, :frequency_day, :schedule).merge(user_id: current_user.id)

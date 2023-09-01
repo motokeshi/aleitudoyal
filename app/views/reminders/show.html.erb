@@ -65,6 +65,7 @@
         <% if article.user_id == current_user.id %>
           <%= link_to "内容を追加する", new_article_post_path(article), class: "btn" %>
         <% end %>
+        <%= button_to "この記事との関連付けを取り消す", cancellation_reminder_path(@reminder.id, article.id), method: "delete" %>
       </div>
     <% end %>
     <%= link_to "article設定ページへ移動", search_reminder_path(@reminder) %>

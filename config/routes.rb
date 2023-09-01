@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     member do
       get 'search'
       post 'relation'
+      delete 'cancellation'
     end
   end
   resources :articles do
