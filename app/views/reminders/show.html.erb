@@ -39,6 +39,9 @@
       <% end %>
     </div>
     <p class="wrapper-subtitle">Article設定</p>
+    <% @reminder.articles.each do |article| %>
+      <%= article.title %><br>
+    <% end %>
     <%= link_to "article設定ページへ移動", search_reminder_path(@reminder) %>
   </div>
 </div>

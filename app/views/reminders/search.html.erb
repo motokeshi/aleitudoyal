@@ -8,11 +8,15 @@
     <% end %>
   </div>
   <div>
-    <ul>
+    <%= form_with(url:relation_reminder_path(@reminder), local: true, method: :post) do |f| %>
       <% @articles.each do |article| %>
-        <li><%= article.title %></li><br>
+        <div>
+          <%= f.radio_button :article_id, :"#{article.id}" %>
+          <%= f.label :title, "#{article.title}" %>
+        </div>
       <% end %>
-    </ul>
+      <%= f.submit "関連付けるarticleを決定" %>
+    <% end %>
   </div>
   <%= link_to "リマインダー詳細へ戻る", reminder_path(@reminder) %>
 </div>

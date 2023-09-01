@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     resources :records, only: [:create, :edit, :update, :destroy]
     member do
       get 'search'
+      post 'relation'
     end
   end
   resources :articles do

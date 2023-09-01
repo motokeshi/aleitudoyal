@@ -46,6 +46,12 @@ class RemindersController < ApplicationController
     @articles = Article.search(params[:keyword])
   end
 
+  def relation
+    reminder_article = ReminderArticle.new(reminder_id: params[:id], article_id: params[:article_id])
+    reminder_article.save
+    redirect_to reminder_path(params[:id])
+  end
+
   private
   def reminder_params
     params.require(:reminder).permit(:image, :title, :genre_id, :outline, :frequency_year, :frequency_month, :frequency_week, :frequency_day, :schedule).merge(user_id: current_user.id)

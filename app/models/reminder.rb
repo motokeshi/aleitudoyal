@@ -1,8 +1,8 @@
 class Reminder < ApplicationRecord
   belongs_to :user
   has_many :records, dependent: :destroy
-  has_many :article, through: :reminder_article
-  has_many :reminder_article
+  has_many :reminder_articles, dependent: :destroy
+  has_many :articles, through: :reminder_articles
   has_one_attached :image, dependent: :destroy
 
   extend ActiveHash::Associations::ActiveRecordExtensions
