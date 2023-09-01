@@ -4,7 +4,12 @@
     <h1 class="wrapper-title">Article Detail</h1>
     <p class="wrapper-subtitle">投稿記事詳細</p>
     <div>
-      <%= link_to "この記事をリマインダーと関連付ける", search_article_path(@article) %>
+      <%= link_to "この記事をリマインダーと関連付ける", search_article_path(@article) %><br>
+      <% @reminders.each do |reminder| %>
+        <% if reminder.user_id == current_user.id%>
+          <%= reminder.title %><br>
+        <% end %>
+      <% end %>
     </div>
     <div class="main-contents">
       <ul>

@@ -12,6 +12,7 @@ class ArticlesController < ApplicationController
     @posts = @article.posts
     @comment = Comment.new
     @comments = @article.comments
+    @reminders = @article.reminders
   end
 
   def new
