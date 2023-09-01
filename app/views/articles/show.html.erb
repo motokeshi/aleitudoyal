@@ -3,6 +3,15 @@
   <div class="main-wrapper">
     <h1 class="wrapper-title">Article Detail</h1>
     <p class="wrapper-subtitle">投稿記事詳細</p>
+    <div>
+      <%= link_to "この記事をリマインダーと関連付ける", search_article_path(@article) %><br>
+      <% @reminders.each do |reminder| %>
+        <% if reminder.user_id == current_user.id%>
+          <%= reminder.title %>
+          <%= button_to "このリマインダーとの関連付けを解除", cancellation_article_path(@article.id, reminder.id), method: "delete" %><br>
+        <% end %>
+      <% end %>
+    </div>
     <div class="main-contents">
       <ul>
         <% if @article.image.present? %>
@@ -19,7 +28,7 @@
         <%= link_to "編集", edit_article_path(@article), class: "edit btn"%>
         <%= link_to "削除", article_path(@article), data: { turbo_method: :delete }, class: "delete btn" %>
       </ul>
-      <%= render "posts/index" %>
+      <%= render partial: "posts/index", locals: { article: @article, posts: @posts } %>
       <%= link_to "内容を追加する", new_article_post_path(@article), class: "btn" %>
     </div>
   </div>

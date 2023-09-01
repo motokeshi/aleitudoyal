@@ -12,6 +12,7 @@ class ArticlesController < ApplicationController
     @posts = @article.posts
     @comment = Comment.new
     @comments = @article.comments
+    @reminders = @article.reminders
   end
 
   def new
@@ -44,6 +45,23 @@ class ArticlesController < ApplicationController
     article_set
     @article.destroy
     redirect_to root_path
+  end
+
+  def search
+    article_set
+    @reminders = Reminder.reminders_search(current_user.id, params[:keyword])
+  end
+
+  def relation
+    reminder_article = ReminderArticle.new(reminder_id: params[:reminder_id], article_id: params[:id])
+    reminder_article.save
+    redirect_to article_path(params[:id])
+  end
+
+  def cancellation
+    reminder_article = ReminderArticle.find_by(reminder_id: params[:format], article_id: params[:id])
+    reminder_article.destroy
+    redirect_to article_path(params[:id])
   end
 
   private

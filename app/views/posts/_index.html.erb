@@ -1,10 +1,12 @@
-<% unless @posts == nil %>
-  <% @posts.each do |post| %>
+<% unless posts == nil %>
+  <% posts.each do |post| %>
     <% if post.image.present? %>
       <%= image_tag post.image %><br>
     <% end %>
     <%= post.text %>
-    <%= link_to "編集", edit_article_post_path(@article, post), class:"btn" %>
-    <%= link_to "削除", article_post_path(@article, post), data: { turbo_method: :delete }, class: "btn" %><br>
+    <% if post.article.user_id == current_user.id %>
+      <%= link_to "編集", edit_article_post_path(article, post), class:"btn" %>
+      <%= link_to "削除", article_post_path(article, post), data: { turbo_method: :delete }, class: "btn" %>
+    <% end %><br>
   <% end %>
 <% end %>

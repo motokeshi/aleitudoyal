@@ -1,0 +1,23 @@
+<%= render "shared/header" %>
+<div class="main">
+  <h1><%= @reminder.title %>に関連するarticleの設定ページ</h1>
+  <div>
+    <%= form_with(url: search_reminder_path(@reminder), local: true, method: :get) do |f| %>
+      <%= f.text_field :keyword, placeholder: "検索したいキーワードを入力してください" %>
+      <%= f.submit "articleのタイトルを検索" %>
+    <% end %>
+  </div>
+  <div>
+    <%= form_with(url:relation_reminder_path(@reminder), local: true, method: :post) do |f| %>
+      <% @articles.each do |article| %>
+        <div>
+          <%= f.radio_button :article_id, :"#{article.id}" %>
+          <%= f.label :title, "#{article.title}" %>
+        </div>
+      <% end %>
+      <%= f.submit "関連付けるarticleを決定" %>
+    <% end %>
+  </div>
+  <%= link_to "リマインダー詳細へ戻る", reminder_path(@reminder) %>
+</div>
+<%= render "shared/footer" %>

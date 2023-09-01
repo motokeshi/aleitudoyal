@@ -2,7 +2,7 @@
 <div class="main">
   <h1 class="wrapper-title"><%= @article.title %></h1>
   <p class="wrapper-subtitle">投稿内容作成ページ</p>
-  <%= render "index" %>
+  <%= render partial: "index", locals: { posts: @posts, article: @article } %>
   <div class='form-wrap'>
     <%= form_with model: [@article, @post], local: true do |f| %>
 

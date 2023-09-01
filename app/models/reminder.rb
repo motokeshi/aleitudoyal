@@ -1,6 +1,8 @@
 class Reminder < ApplicationRecord
   belongs_to :user
   has_many :records, dependent: :destroy
+  has_many :reminder_articles, dependent: :destroy
+  has_many :articles, through: :reminder_articles
   has_one_attached :image, dependent: :destroy
 
   extend ActiveHash::Associations::ActiveRecordExtensions
@@ -20,5 +22,13 @@ class Reminder < ApplicationRecord
       schedule = schedule + frequency_day
     end
     return schedule
+  end
+
+  def self.reminders_search(user_id, search)
+    if search != ""
+      Reminder.where(user_id: user_id).where('title LIKE(?)', "%#{search}%")
+    else
+      Reminder.where(user_id: user_id)
+    end
   end
 end
