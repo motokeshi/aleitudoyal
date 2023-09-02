@@ -1,0 +1,124 @@
+.main-wrapper {
+  margin: 5px 5px 5px 270px;
+  padding: 5px;
+  height: calc(100vh - 50px);
+  border-radius: 3px;
+  border: 1px solid lightgray;
+  text-align: center;
+  background-color: whitesmoke;
+  box-shadow: 3px 3px 6px gray;
+}
+
+.sidebar {
+  position: fixed;
+  margin: 0 5px 5px;
+  padding: 5px;
+  width: 250px;
+  height: calc(100vh - 50px);
+  border-radius: 3px;
+  background-color: gainsboro;
+  box-shadow: 3px 3px 6px gray;
+}
+
+.sidebar-logo {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.sidebar-logo-pict {
+  width: 230px;
+}
+
+.sidebar-user-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px auto;
+  padding: 10px;
+  width: fit-content;
+  height: fit-content;
+  border-radius: 5px;
+  background-color: whitesmoke;
+  box-shadow: 0 0 6px darkgray;
+}
+
+.sidebar-user-image {
+  margin: 5px;
+  width: 200px;
+  height: 100px;
+  border-radius: 20%;
+  border: gray 4px solid;
+  object-fit: cover;
+}
+
+.sidebar-user-name {
+  margin-bottom: 10px;
+  font-weight: bold;
+  color: black;
+  text-decoration: none;
+}
+
+.sidebar-content {
+  margin: 10px auto;
+  padding: 5px;
+  width: 220px;
+  text-align: center;
+  border-radius: 3px;
+  background-color: whitesmoke;
+}
+
+.sidebar-content:hover {
+  margin: 15px auto;
+  background-color: lightcyan;
+  box-shadow: 0 0 6px darkgray;
+}
+
+.wrapper-title {
+  font-size: 40px;
+}
+
+.wrapper-subtitle {
+  border-bottom: grey solid 1px;
+  color: gray;
+}
+
+.logout {
+  border: black 2px solid;
+  color: black;
+}
+
+.logout:hover {
+  background-color: black;
+  color: #fff;
+}
+
+.login {
+  border: black 2px solid;
+  color: black;
+}
+
+.login:hover {
+  background-color: black;
+  color: #fff;
+}
+
+.btn {
+  margin: 0 5px;
+  border-radius: 5px;
+  padding: 1px;
+  text-decoration: none;
+  font-weight: bold;
+  color: black;
+}
+
+.registration {
+  border: black 2px solid;
+  color: black;
+}
+
+.registration:hover {
+  background-color: black;
+  color: #fff;
+}
