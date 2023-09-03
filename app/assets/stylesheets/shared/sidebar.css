@@ -1,23 +1,38 @@
+.main-contener {
+  display: flex;
+}
+
 .main-wrapper {
-  margin: 5px 5px 5px 270px;
+  margin: 5px 10px 5px 5px;
   padding: 5px;
-  height: calc(100vh - 50px);
+  height: calc(100vh - 65px);
+  width: calc(100vw - 250px);
+  min-width: 600px;
   border-radius: 3px;
   border: 1px solid lightgray;
   text-align: center;
-  background-color: whitesmoke;
+  background-color: gainsboro;
   box-shadow: 3px 3px 6px gray;
+  overflow-y: auto;
 }
 
 .sidebar {
-  position: fixed;
-  margin: 0 5px 5px;
+  margin: 5px;
   padding: 5px;
   width: 250px;
-  height: calc(100vh - 50px);
+  min-width: 250px;
+  height: calc(100vh - 65px);
   border-radius: 3px;
-  background-color: gainsboro;
+  background-color: lightgray;
   box-shadow: 3px 3px 6px gray;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.sidebar-btn-wrapper {
+  display: flex;
+  justify-content: space-between;
+  width: 200px;
 }
 
 .sidebar-logo {
@@ -28,7 +43,7 @@
 }
 
 .sidebar-logo-pict {
-  width: 230px;
+  width: 200px;
 }
 
 .sidebar-user-info {
@@ -46,8 +61,8 @@
 
 .sidebar-user-image {
   margin: 5px;
-  width: 200px;
-  height: 100px;
+  width: 190px;
+  height: 80px;
   border-radius: 20%;
   border: gray 4px solid;
   object-fit: cover;
@@ -64,13 +79,11 @@
   margin: 10px auto;
   padding: 5px;
   width: 220px;
-  text-align: center;
   border-radius: 3px;
   background-color: whitesmoke;
 }
 
 .sidebar-content:hover {
-  margin: 15px auto;
   background-color: lightcyan;
   box-shadow: 0 0 6px darkgray;
 }
@@ -105,6 +118,9 @@
 }
 
 .btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin: 0 5px;
   border-radius: 5px;
   padding: 1px;

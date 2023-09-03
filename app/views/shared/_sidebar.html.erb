@@ -17,24 +17,29 @@
         <%= link_to "ログアウト", destroy_user_session_path, data: {turbo_method: :delete}, class: "logout btn" %>
       </div>
     <% else %>
-      <div>
-        <%= link_to "ログイン", new_user_session_path, class: "login btn" %>
-      </div>
-      <div>
-        <%= link_to "新規登録", new_user_registration_path, class: "registration btn" %>
+      <div class="sidebar-btn-wrapper">
+        <div>
+          <%= link_to "ログイン", new_user_session_path, class: "login btn" %>
+        </div>
+        <div>
+          <%= link_to "新規登録", new_user_registration_path, class: "registration btn" %>
+        </div>
       </div>
     <% end %>
+  </div>
+  <div class="sidebar-content">
+    <%= link_to "リマインダー一覧", reminders_path, class: "btn" %>
   </div>
   <div class="sidebar-content">
     <%= link_to "リマインダー登録", new_reminder_path, class: "btn" %>
   </div>
   <div class="sidebar-content">
-    <%= link_to "リマインダー一覧", reminders_path, class: "btn" %><br>
+    <%= link_to "Doyal一覧", articles_path, class: "btn" %>
   </div>
   <div class="sidebar-content">
-    <%= link_to "記事新規投稿", new_article_path, class: "btn" %><br>
+    <%= link_to "Doyal新規投稿", new_article_path, class: "btn" %>
   </div>
-  <div class="sidebar-content">
-    <%= link_to "マイ記事一覧", "#", class: "btn" %>
-  </div>
+  <%# <div class="sidebar-content"> %>
+    <%#= link_to "マイ記事一覧", "#", class: "btn" %>
+  <%# </div> %>
 </div>
