@@ -1,69 +1,38 @@
-<%= render "shared/header" %>
-<div class="root-main">
-  <div class="top-wrapper">
-    <%= image_tag "aleitu-hero.jpg", class: "top-hero-pict" %>
-  </div>
-  <% if user_signed_in? %>
-    <div class="center-container">
-      <div class="center-left-wrapper">
-        <h2 class="wrapper-title">Reminders</h2>
-        <p class="wrapper-subtitle">直近のリマインダー</p>
-        <ul>
-          <% @reminders.each do |reminder|%>
-            <% if reminder.schedule <= (Date.today >> 1) %>
-              <li class="left-wrapper-list-item">
-                <div class="list-item-contents">
-                  <div class="list-item-left-inner">
-                    <div class="remind-date">
-                      <%= reminder.schedule %>
-                    </div>
-                    <div class="remind-title">
-                      <%= link_to reminder.title, reminder_path(reminder) %>
-                    </div>
-                  </div>
-                  <div class="list-item-right-inner">
-                    <div class="remind-next-schedule">
-                      <%= next_schedule = reminder.next_schedule_calculation(reminder.schedule, reminder.frequency_year, reminder.frequency_month, reminder.frequency_week, reminder.frequency_day) %>
-                    </div>
-                    <% unless reminder.records.exists?(implementation_record: Date.today, reminder_id: reminder.id) %>
-                      <%= link_to "完了", reminder_records_path(reminder, root: true), data: { turbo_method: :post }, class: "completion btn" %>
-                      <%= link_to "skip", reminder_records_path(reminder, root: true, skip: true), data: { turbo_method: :post }, class: "skip btn" %>
-                    <% end %>
-                  </div>
-                </div>
-              </li>
+<div class="main-contener">
+  <%= render "shared/sidebar" %>
+  <div class="main-wrapper">
+    <h1 class="wrapper-title">Posted Doyal</h1>
+    <%= form_with(url: articles_path, local: true, method: :get) do |f| %>
+      <%= f.text_field :keyword, placeholder: "検索したいキーワードを入力してください", class: "search-form-textbox" %>
+      <%= f.submit "タイトルを検索", class: "form-submit-btn" %>
+    <% end %>
+    <div class="contents-card-wrapper">
+      <% @articles.each do |article| %>
+        <div class="main-contents-card">
+          <div class="article-card-image">
+            <% if article.image.present? %>
+              <%= link_to image_tag(article.image, class: "article-card-image"), article_path(article) %>
+            <% else %>
+              <%= link_to image_tag("no-image.jpg", class: "article-card-image"), article_path(article) %>
             <% end %>
-          <% end %>
-        </ul>
-      </div>
-      <div class="center-right-wrapper">
-        <div class="right-contents-outer">
-            <%= link_to "リマインダー登録", new_reminder_path, class: "btn" %><br>
-            <%= link_to "リマインダー一覧", reminders_path, class: "btn" %><br>
-            <%= link_to "記事新規投稿", new_article_path, class: "btn" %><br>
-            <%= link_to "マイ記事一覧", "#", class: "btn" %>
-        </div>
-        <div class="right-contents-outer">
-          follow list area
-        </div>
-      </div>
-    </div>
-  <% end %>
-  <div class="bottom-wrapper">
-    <h2 class="wrapper-title">Recent Articles</h2>
-    <p class="wrapper-subtitle">最近の投稿一覧</p>
-    <% @articles.each do |article| %>
-      <% if article.release %>
-        <div>
-          <div>
-            <%= link_to article.title, article_path(article) %>
           </div>
-          <div>
-            <%= article.updated_at %>
+          <div class="article-card-content">
+            <div>
+              タイトル : <%= link_to article.title, article_path(article) %>
+            </div>
+            <div>
+              ジャンル : <%= article.genre.name %>
+            </div>
+            <div>
+              作成者　 : <%= link_to article.user.name, user_path(article.user) %>
+            </div>
+            <div>
+              投稿日時 : <%= article.updated_at %>
+            </div>
           </div>
         </div>
       <% end %>
-    <% end %>
+    </div>
   </div>
 </div>
 <%= render "shared/footer" %>

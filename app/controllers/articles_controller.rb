@@ -1,10 +1,6 @@
 class ArticlesController < ApplicationController
   def index
-    if user_signed_in?
-      @user = current_user
-      @reminders = @user.reminders.order(:schedule)
-    end
-    @articles = Article.order(updated_at: :desc).includes(:user)
+    @articles = Article.articles_search(params[:keyword]).order(updated_at: :desc).includes(:user)
   end
 
   def show
