@@ -1,8 +1,7 @@
 .footer{
-  position: fixed;
   margin-left: 5px;
-  bottom: 5px;
   height: 25px;
+  min-width: 876px;
   width: calc(100vw - 10px);
   border-radius: 3px;
   background-color: gray;
