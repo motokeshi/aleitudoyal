@@ -1,26 +1,27 @@
-<%= render "shared/sidebar" %>
-
-<div class="main-wrapper">
-  <h1 class="wrapper-title">Today's Reminder</h1>
-  <% @today_reminders.each do |reminder|%>
-    <div class="main-contents">
-      <div class="main-contents-left-inner">
-        <%= link_to reminder.title, reminder_path(reminder), class: "btn" %>
-      </div>
-      <div class="main-contents-right-inner">
-        <% unless reminder.records.exists?(implementation_record: Date.today, reminder_id: reminder.id) %>
-          <%= link_to "finish!", reminder_records_path(reminder, root: true), data: { turbo_method: :post }, class: "completion btn" %>
-          <%= link_to "skip", reminder_records_path(reminder, root: true, skip: true), data: { turbo_method: :post }, class: "skip btn" %>
-        <% end %>
-        <div class="remind-next-schedule">
-          次回予定:<%= next_schedule = reminder.next_schedule_calculation(reminder.schedule, reminder.frequency_year, reminder.frequency_month, reminder.frequency_week, reminder.frequency_day) %>
+<div class="main-contener">
+  <%= render "shared/sidebar" %>
+  <div class="main-wrapper">
+    <h1 class="wrapper-title">Today's Reminder</h1>
+    <% @today_reminders.each do |reminder|%>
+      <div class="main-contents">
+        <div class="main-contents-left-inner">
+          <%= link_to reminder.title, reminder_path(reminder), class: "btn" %>
+        </div>
+        <div class="main-contents-right-inner">
+          <%# unless reminder.records.exists?(implementation_record: Date.today, reminder_id: reminder.id) %>
+            <%= link_to "finish!", reminder_records_path(reminder, root: true), data: { turbo_method: :post }, class: "completion btn" %>
+            <%= link_to "skip", reminder_records_path(reminder, root: true, skip: true), data: { turbo_method: :post }, class: "skip btn" %>
+          <%# end %>
+          <div class="remind-next-schedule">
+            次回予定<br>
+            <%= next_schedule = reminder.next_schedule_calculation(reminder.schedule, reminder.frequency_year, reminder.frequency_month, reminder.frequency_week, reminder.frequency_day) %>
+          </div>
         </div>
       </div>
-    </div>
-  <% end %>
-  <% if @today_reminders == [] %>
-    本日のリマインダーはありません
-  <% end %>
+    <% end %>
+    <% if @today_reminders == [] %>
+      本日のリマインダーはありません
+    <% end %>
+  </div>
 </div>
-
 <%= render "shared/footer" %>
