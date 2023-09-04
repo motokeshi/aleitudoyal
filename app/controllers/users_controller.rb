@@ -1,5 +1,14 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!, except: :show
+  before_action :authenticate_user!, except: [:show, :index]
+
+  def index
+    if user_signed_in?
+      @user = current_user
+      @today_reminders = Reminder.where(user_id: current_user.id).where("schedule<=?", Date.today)
+    else
+      redirect_to articles_path
+    end
+  end
 
   def show
     @user = User.find(params[:id])

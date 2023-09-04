@@ -1,8 +1,13 @@
 .footer{
-  height: 40px;
-  margin-top: 30px;
+  margin-left: 5px;
+  height: 25px;
+  min-width: 876px;
+  width: calc(100vw - 10px);
+  border-radius: 3px;
   background-color: gray;
   color: #fff;
+  font-size: 12px;
   text-align: center;
-  line-height: 40px;
+  line-height: 25px;
+  box-shadow: 3px 3px 6px gray;
 }

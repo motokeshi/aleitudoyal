@@ -1,0 +1,140 @@
+.main-contener {
+  display: flex;
+}
+
+.main-wrapper {
+  margin: 5px 10px 5px 5px;
+  padding: 5px;
+  height: calc(100vh - 65px);
+  width: calc(100vw - 250px);
+  min-width: 600px;
+  border-radius: 3px;
+  border: 1px solid lightgray;
+  text-align: center;
+  background-color: gainsboro;
+  box-shadow: 3px 3px 6px gray;
+  overflow-y: auto;
+}
+
+.sidebar {
+  margin: 5px;
+  padding: 5px;
+  width: 250px;
+  min-width: 250px;
+  height: calc(100vh - 65px);
+  border-radius: 3px;
+  background-color: lightgray;
+  box-shadow: 3px 3px 6px gray;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.sidebar-btn-wrapper {
+  display: flex;
+  justify-content: space-between;
+  width: 200px;
+}
+
+.sidebar-logo {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.sidebar-logo-pict {
+  width: 200px;
+}
+
+.sidebar-user-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px auto;
+  padding: 10px;
+  width: fit-content;
+  height: fit-content;
+  border-radius: 5px;
+  background-color: whitesmoke;
+  box-shadow: 0 0 6px darkgray;
+}
+
+.sidebar-user-image {
+  margin: 5px;
+  width: 190px;
+  height: 80px;
+  border-radius: 20%;
+  border: gray 4px solid;
+  object-fit: cover;
+}
+
+.sidebar-user-name {
+  margin-bottom: 10px;
+  font-weight: bold;
+  color: black;
+  text-decoration: none;
+}
+
+.sidebar-content {
+  margin: 10px auto;
+  padding: 5px;
+  width: 220px;
+  border-radius: 3px;
+  background-color: whitesmoke;
+}
+
+.sidebar-content:hover {
+  background-color: lightcyan;
+  box-shadow: 0 0 6px darkgray;
+}
+
+.wrapper-title {
+  font-size: 40px;
+}
+
+.wrapper-subtitle {
+  border-bottom: grey solid 1px;
+  color: gray;
+}
+
+.logout {
+  border: black 2px solid;
+  color: black;
+}
+
+.logout:hover {
+  background-color: black;
+  color: #fff;
+}
+
+.login {
+  border: black 2px solid;
+  color: black;
+}
+
+.login:hover {
+  background-color: black;
+  color: #fff;
+}
+
+.btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 5px;
+  border-radius: 5px;
+  padding: 1px;
+  text-decoration: none;
+  font-weight: bold;
+  color: black;
+}
+
+.registration {
+  border: black 2px solid;
+  color: black;
+}
+
+.registration:hover {
+  background-color: black;
+  color: #fff;
+}
