@@ -11,11 +11,14 @@
         <%= image_tag "no-image.jpg", class:"main-user-img" %>
       <% end %>
       <br>
-      ジャンル : <% if @article.genre.present? %><%= @article.genre.name %><% end %>
-      <div class="article-btn-area">
-        <%= link_to "編集", edit_article_path(@article), class: "form-submit-btn"%>
-        <%= link_to "！削除！", article_path(@article), data: { turbo_method: :delete }, class: "form-submit-btn" %>
-      </div>
+      <p>ジャンル : <% if @article.genre.present? %><%= @article.genre.name %><% end %></p>
+      <p>作成者 : <%= @article.user.name %></p>
+      <% if user_signed_in? && @article.user_id == current_user.id %>
+        <div class="article-btn-area">
+          <%= link_to "編集", edit_article_path(@article), class: "form-submit-btn"%>
+          <%= link_to "！削除！", article_path(@article), data: { turbo_method: :delete }, class: "form-submit-btn" %>
+        </div>
+      <% end %>
       <br>
       <hr>
       <h2 class="article-title">Doyal memo</h2>
@@ -30,16 +33,18 @@
             <%= post.text %>
           </div>
         </div>
-        <div class="article-btn-area">
-          <%= link_to "このmemoを編集する", edit_article_post_path(@article, post), class: "form-submit-btn"%>
-          <%= link_to "！このmemoを削除する！", article_post_path(@article, post), data: { turbo_method: :delete }, class: "form-submit-btn" %>
-        </div>
+        <% if user_signed_in? && @article.user_id == current_user.id %>
+          <div class="article-btn-area">
+            <%= link_to "このmemoを編集する", edit_article_post_path(@article, post), class: "form-submit-btn"%>
+            <%= link_to "！このmemoを削除する！", article_post_path(@article, post), data: { turbo_method: :delete }, class: "form-submit-btn" %>
+          </div>
+        <% end %>
         <hr class="post-hr">
       <% end %>
       <%#= render partial: "posts/index", locals: { article: @article, posts: @posts } %>
       <div class="post-contents-bottom">
         <% if user_signed_in? && @article.user_id == current_user.id %>
-          <%= link_to "Doyal memoを追加する", new_article_post_path(@article), class: "btn doyal-plus" %>
+          <%= link_to "Doyal memoを追加する", new_article_post_path(@article), class: "main-btn" %>
         <% end %>
       </div>
     </div>
@@ -71,7 +76,7 @@
               <%= f.text_area :text, class: "form-textbox", placeholder: "コメントを記入してください" %>
             </div>
             <div>
-              <%= f.submit "コメント送信", class: "btn doyal-plus" %>
+              <%= f.submit "コメント送信", class: "main-btn" %>
             </div>
           <% end %>
         <% end %>
@@ -80,10 +85,9 @@
     <% if user_signed_in? %>
       <hr>
       <div class="relation-reminder-wrapper">
-        <h2 class="article-title">リマインダーとの関連</h2>
+        <h2 class="article-title">関連付けたリマインダー一覧</h2>
         <hr>
         <div>
-          <%= link_to "リマインダーとの関連付けページへ", search_article_path(@article), class: "btn doyal-plus" %>
           <% @reminders.each do |reminder| %>
             <% if reminder.user_id == current_user.id%>
               <div class="reminder-card">
@@ -101,6 +105,9 @@
               </div>
             <% end %>
           <% end %>
+          <div class="main-btn-area">
+            <%= link_to "リマインダーとの関連付けページへ", search_article_path(@article), class: "main-btn" %>
+          </div>
         </div>
       </div>
     <% end %>

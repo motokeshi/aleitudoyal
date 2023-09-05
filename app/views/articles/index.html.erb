@@ -1,7 +1,8 @@
 <div class="main-contener">
   <%= render "shared/sidebar" %>
   <div class="main-wrapper">
-    <h1 class="wrapper-title">Posted Doyal</h1>
+    <h1 class="wrapper-title">Posted Doyals</h1>
+    <h2 class="wrapper-subtitle">Doyal一覧ページ</h2>
     <%= form_with(url: articles_path, local: true, method: :get) do |f| %>
       <%= f.text_field :keyword, placeholder: "検索したいキーワードを入力してください", class: "search-form-textbox" %>
       <%= f.submit "タイトルを検索", class: "form-submit-btn" %>
