@@ -1,14 +1,14 @@
 class ArticlesController < ApplicationController
   def index
-    @articles = Article.articles_search(params[:keyword]).order(updated_at: :desc).includes(:user)
+    @articles = Article.articles_search(params[:keyword]).order(updated_at: :desc).includes(:user).with_attached_image
   end
 
   def show
     @article = Article.find(params[:id])
-    @posts = @article.posts
+    @posts = @article.posts.with_attached_image
     @comment = Comment.new
-    @comments = @article.comments
-    @reminders = @article.reminders
+    @comments = @article.comments.includes(:user)
+    @reminders = @article.reminders.with_attached_image
   end
 
   def new

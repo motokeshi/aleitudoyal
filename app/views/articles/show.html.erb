@@ -1,57 +1,109 @@
-<%= render "shared/header" %>
-<div class="main">
+<div class="main-contener">
+  <%= render "shared/sidebar" %>
   <div class="main-wrapper">
     <h1 class="wrapper-title">Article Detail</h1>
     <p class="wrapper-subtitle">投稿記事詳細</p>
-    <div>
-      <%= link_to "この記事をリマインダーと関連付ける", search_article_path(@article) %><br>
-      <% @reminders.each do |reminder| %>
-        <% if reminder.user_id == current_user.id%>
-          <%= reminder.title %>
-          <%= button_to "このリマインダーとの関連付けを解除", cancellation_article_path(@article.id, reminder.id), method: "delete" %><br>
-        <% end %>
+    <div class="article-info-area">
+      <h2 class="article-title"><%= @article.title %></h2>
+      <% if @article.image.present? %>
+        <%= image_tag @article.image, class:"article-image" %>
+      <% else %>
+        <%= image_tag "no-image.jpg", class:"main-user-img" %>
       <% end %>
-    </div>
-    <div class="main-contents">
-      <ul>
-        <% if @article.image.present? %>
-          <%= image_tag @article.image, class:"main-user-img" %>
-        <% else %>
-          <%= image_tag "no-image.jpg", class:"main-user-img" %>
+      <br>
+      ジャンル : <% if @article.genre.present? %><%= @article.genre.name %><% end %>
+      <div class="article-btn-area">
+        <%= link_to "編集", edit_article_path(@article), class: "form-submit-btn"%>
+        <%= link_to "！削除！", article_path(@article), data: { turbo_method: :delete }, class: "form-submit-btn" %>
+      </div>
+      <br>
+      <hr>
+      <h2 class="article-title">Doyal memo</h2>
+      <% @article.posts.each do |post| %>
+        <div class="post-contents">
+          <% if post.image.present? %>
+            <div class="post-image-area">
+              <%= image_tag post.image, class: "post-image" %>
+            </div>
+          <% end %>
+          <div class="post-text">
+            <%= post.text %>
+          </div>
+        </div>
+        <div class="article-btn-area">
+          <%= link_to "このmemoを編集する", edit_article_post_path(@article, post), class: "form-submit-btn"%>
+          <%= link_to "！このmemoを削除する！", article_post_path(@article, post), data: { turbo_method: :delete }, class: "form-submit-btn" %>
+        </div>
+        <hr class="post-hr">
+      <% end %>
+      <%#= render partial: "posts/index", locals: { article: @article, posts: @posts } %>
+      <div class="post-contents-bottom">
+        <% if user_signed_in? && @article.user_id == current_user.id %>
+          <%= link_to "Doyal memoを追加する", new_article_post_path(@article), class: "btn doyal-plus" %>
         <% end %>
-        <li class="main-list-item">
-          タイトル : <%= @article.title %>
-        </li>
-        <li class="main-list-item">
-          ジャンル : <% if @article.genre.present? %><%= @article.genre.name %><% end %>
-        </li>
-        <%= link_to "編集", edit_article_path(@article), class: "edit btn"%>
-        <%= link_to "削除", article_path(@article), data: { turbo_method: :delete }, class: "delete btn" %>
-      </ul>
-      <%= render partial: "posts/index", locals: { article: @article, posts: @posts } %>
-      <%= link_to "内容を追加する", new_article_post_path(@article), class: "btn" %>
+      </div>
     </div>
+    <div class="comment-contener">
+      <div class="comment-wrapper">
+        <h2>コメント欄</h2>
+        <hr>
+        <% if @comments.present? %>
+          <% @comments.each do |comment| %>
+            <div class="comment-contents">
+              <div class="comment-content">
+                <%= comment.text %>
+                <div class="comment-data">
+                  <%= comment.user.name %>
+                  <%= comment.created_at %>
+                </div>
+              </div>
+              <div class="comment-btn-area">
+                <% if user_signed_in? && comment.user_id == current_user.id %>
+                  <%= button_to "コメント削除", article_comment_path(@article, comment), method: "delete", class: "form-submit-btn" %>
+                <% end %>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+        <% if user_signed_in? %>
+          <%= form_with model: [@article, @comment], local: true do |f| %>
+            <div>
+              <%= f.text_area :text, class: "form-textbox", placeholder: "コメントを記入してください" %>
+            </div>
+            <div>
+              <%= f.submit "コメント送信", class: "btn doyal-plus" %>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+    <% if user_signed_in? %>
+      <hr>
+      <div class="relation-reminder-wrapper">
+        <h2 class="article-title">リマインダーとの関連</h2>
+        <hr>
+        <div>
+          <%= link_to "リマインダーとの関連付けページへ", search_article_path(@article), class: "btn doyal-plus" %>
+          <% @reminders.each do |reminder| %>
+            <% if reminder.user_id == current_user.id%>
+              <div class="reminder-card">
+                <div class="reminder-card-image">
+                  <% if reminder.image.present? %>
+                    <%= image_tag reminder.image, class: "reminder-card-image" %>
+                  <% else %>
+                    <%= image_tag "no-image.jpg", class: "reminder-card-image" %>
+                  <% end %>
+                </div>
+                <div>
+                  <%= reminder.title %>
+                  <%= button_to "このリマインダーとの関連付けを解除", cancellation_article_path(@article.id, reminder.id), method: "delete", class: "form-submit-btn" %>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
   </div>
-  <div>
-  <% if @comments.present? %>
-    <% @comments.each do |comment| %>
-      <%= comment.text %>
-      <%= comment.user.name %>
-      <%= comment.created_at %>
-      <% if user_signed_in? && comment.user_id == current_user.id %>
-        <%= button_to "コメント削除", article_comment_path(@article, comment), method: "delete" %>
-      <% end %>
-    <% end %>
-  <% end %>
-  <% if user_signed_in? %>
-    <%= form_with model: [@article, @comment], local: true do |f| %>
-      <div>
-        <%= f.text_area :text, placeholder: "コメントを記入してください" %>
-      </div>
-      <div>
-        <%= f.submit "コメント送信" %>
-      </div>
-    <% end %>
-  <% end %>
 </div>
 <%= render "shared/footer" %>
