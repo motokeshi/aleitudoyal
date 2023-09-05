@@ -27,18 +27,22 @@
       </div>
     <% end %>
   </div>
-  <div class="sidebar-content">
-    <%= link_to "リマインダー一覧", reminders_path, class: "btn" %>
-  </div>
-  <div class="sidebar-content">
-    <%= link_to "リマインダー登録", new_reminder_path, class: "btn" %>
-  </div>
+  <% if user_signed_in? %>
+    <div class="sidebar-content">
+      <%= link_to "リマインダー一覧", reminders_path, class: "btn" %>
+    </div>
+    <div class="sidebar-content">
+      <%= link_to "リマインダー登録", new_reminder_path, class: "btn" %>
+    </div>
+  <% end %>
   <div class="sidebar-content">
     <%= link_to "Doyal一覧", articles_path, class: "btn" %>
   </div>
-  <div class="sidebar-content">
-    <%= link_to "Doyal新規投稿", new_article_path, class: "btn" %>
-  </div>
+  <% if user_signed_in? %>
+    <div class="sidebar-content">
+      <%= link_to "Doyal新規投稿", new_article_path, class: "btn" %>
+    </div>
+  <% end %>
   <%# <div class="sidebar-content"> %>
     <%#= link_to "マイ記事一覧", "#", class: "btn" %>
   <%# </div> %>
