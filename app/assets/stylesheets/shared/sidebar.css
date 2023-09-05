@@ -1,12 +1,33 @@
+.main-btn-area {
+  margin: 20px auto;
+}
+
+.main-btn {
+  padding: 10px;
+  border-radius: 10px;
+  border: 2px solid black;
+  font-weight: bold;
+  text-decoration: none;
+  color: black;
+}
+
+.main-btn:hover {
+  color: whitesmoke;
+  background-color: black;
+  box-shadow: 0 0 10px gray;
+}
+
 .form-wrapper {
   padding: 20px;
   margin: 10px;
   border-radius: 10px;
+  text-align: center;
   background-color: whitesmoke;
   box-shadow: 0 0 12px gray;
 }
 
 .form-group {
+  align-items: center;
   margin: 10px;
 }
 
@@ -35,6 +56,7 @@
   padding: 5px;
   border-radius: 10px;
   border: 2px solid gray;
+  font-weight: bold;
   color: dimgray;
   text-decoration: none;
   background-color: whitesmoke;
@@ -166,9 +188,9 @@
 }
 
 .btn {
-  /* display: flex;
+  display: flex;
   justify-content: center;
-  align-items: center; */
+  align-items: center;
   /* margin: 0 5px; */
   border-radius: 5px;
   padding: 2px;
