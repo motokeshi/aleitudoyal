@@ -1,7 +1,129 @@
+.article-card-wrapper {
+  margin: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: whitesmoke;
+  box-shadow: 0 0 12px gray;
+}
+
+.article-card-header {
+  display: flex;
+  width: 100%;
+  text-align: left;
+}
+
 .remind-date {
   display: flex;
   justify-content: center;
   align-items: center;
   min-width: 110px;
   font-size: smaller;
+}
+
+.reminder-wrapper {
+  margin: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  text-align: center;
+  background-color: whitesmoke;
+  box-shadow: 0 0 12px gray;
+}
+
+.reminder-image {
+  margin-top: 10px;
+  height: 300px;
+  width: 70%;
+  border-radius: 10px;
+  object-fit: cover;
+  box-shadow: 0 0 10px gray;
+}
+
+.reminder-data-area {
+  display: flex;
+  margin: 5px 0 10px;
+  width: 100%;
+  justify-content: space-around;
+}
+
+.reminder-content {
+  padding: 5px;
+  border-radius: 5px;
+  background-color: white;
+}
+
+.reminder-outline {
+  padding: 10px;
+  border-radius: 5px;
+  background-color: white;
+}
+
+.reminder-btn-area {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.reminder-btn-area-inner {
+  width: 200px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.reminder-finish-btn {
+  margin: auto;
+  padding: 5px 10px;
+  border-radius: 10px;
+  border: 2px solid orangered;
+  font-weight: bold;
+  font-size: large;
+  color: orangered;
+  text-decoration: none;
+}
+
+.reminder-finish-btn:hover {
+  color: whitesmoke;
+  background-color: orangered;
+}
+
+.reminder-skip-btn {
+  margin: auto;
+  padding: 5px 15px;
+  border-radius: 10px;
+  border: 2px solid royalblue;
+  font-weight: bold;
+  font-size: large;
+  color: royalblue;
+  text-decoration: none;
+}
+
+.reminder-skip-btn:hover {
+  color: whitesmoke;
+  background-color: royalblue;
+}
+
+.record-wrapper {
+  height: 120px;
+  overflow-y: auto;
+}
+
+.record-contents {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2px;
+}
+
+.record-edit-btn {
+  margin-left: 5px;
+  padding: 2px;
+  border-radius: 5px;
+  border: 2px solid dimgray;
+  text-decoration: none;
+  color: dimgray;
+  cursor: pointer;
+}
+
+.record-edit-btn:hover {
+  color: whitesmoke;
+  background-color: dimgray;
 }
