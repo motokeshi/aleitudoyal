@@ -1,23 +1,27 @@
-<%= render "shared/header" %>
-<div class="main">
-  <h1><%= @reminder.title %>に関連するarticleの設定ページ</h1>
-  <div>
-    <%= form_with(url: search_reminder_path(@reminder), local: true, method: :get) do |f| %>
-      <%= f.text_field :keyword, placeholder: "検索したいキーワードを入力してください" %>
-      <%= f.submit "articleのタイトルを検索" %>
-    <% end %>
-  </div>
-  <div>
-    <%= form_with(url:relation_reminder_path(@reminder), local: true, method: :post) do |f| %>
-      <% @articles.each do |article| %>
-        <div>
-          <%= f.radio_button :article_id, :"#{article.id}" %>
-          <%= f.label :title, "#{article.title}" %>
-        </div>
+<div class="main-contener">
+  <%= render "shared/sidebar" %>
+  <div class="main-wrapper">
+    <h1 class="wrapper-title"><%= @reminder.title %></h1>
+    <h2 class="wrapper-subtitle">Doyal関連付けページ</h2>
+    <br>
+      <%= form_with(url: search_reminder_path(@reminder), local: true, method: :get) do |f| %>
+        <%= f.text_field :keyword, placeholder: "検索したいキーワードを入力してください", class: "search-form-textbox" %>
+        <%= f.submit "Doyal記事のタイトルを検索", class:"form-submit-btn" %>
       <% end %>
-      <%= f.submit "関連付けるarticleを決定" %>
-    <% end %>
+    <div class="form-wrapper">
+      <%= form_with(url:relation_reminder_path(@reminder), local: true, method: :post) do |f| %>
+        <% @articles.each do |article| %>
+          <div>
+            <%= f.radio_button :article_id, "#{article.id}" %>
+            <%= f.label :article_id, "#{article.title}", value: "#{article.id}" %>
+          </div>
+        <% end %>
+        <%= f.submit "関連付けるDoyalを決定する", class: "form-submit-btn" %>
+      <% end %>
+    </div>
+    <div class="main-btn-area">
+      <%= link_to "リマインダー詳細へ戻る", reminder_path(@reminder), class: "main-btn" %>
+    </div>
   </div>
-  <%= link_to "リマインダー詳細へ戻る", reminder_path(@reminder) %>
 </div>
 <%= render "shared/footer" %>

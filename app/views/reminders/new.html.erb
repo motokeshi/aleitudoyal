@@ -16,7 +16,7 @@
         </div>
         <div class="form-group">
           <label class="form-label">リマインドのジャンル</label><br>
-          <%= f.collection_select(:genre_id, Genre.all, :id, :name, {}, {class:"genre-select"}) %>
+          <%= f.collection_select(:genre_id, Genre.all, :id, :name, {}, {class:"form-input-field"}) %>
         </div>
         <div class="form-group">
           <label class="form-label">リマインドの概要</label><br>
@@ -31,7 +31,7 @@
         </div>
         <div class="form-group">
           <label class="form-label">初回リマインド予定 ※必須</label><br>
-          <%= f.date_field :schedule, class:"input-default", id:"schedule" %>
+          <%= f.date_field :schedule, class:"form-input-field", id:"schedule" %>
         </div>
         <%= f.submit "リマインダーを登録する" ,class:"form-submit-btn" %>
       <% end %>
