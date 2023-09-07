@@ -1,7 +1,8 @@
 <div class="main-contener">
   <%= render "shared/sidebar" %>
   <div class="main-wrapper">
-    <h1 class="wrapper-title">Posted Doyal</h1>
+    <h1 class="wrapper-title">Posted Doyals</h1>
+    <h2 class="wrapper-subtitle">Doyal一覧ページ</h2>
     <%= form_with(url: articles_path, local: true, method: :get) do |f| %>
       <%= f.text_field :keyword, placeholder: "検索したいキーワードを入力してください", class: "search-form-textbox" %>
       <%= f.submit "タイトルを検索", class: "form-submit-btn" %>
@@ -32,6 +33,36 @@
               </div>
             </div>
           </div>
+        <% end %>
+      <% end %>
+      <% if user_signed_in? %>
+        <p class="wrapper-subtitle">非公開設定のDoyal</p>
+        <% @articles.each do |article| %>
+          <% if article.release == false %>
+            <div class="main-contents-card">
+              <div class="article-card-image">
+                <% if article.image.present? %>
+                  <%= link_to image_tag(article.image, class: "article-card-image"), article_path(article) %>
+                <% else %>
+                  <%= link_to image_tag("no-image.jpg", class: "article-card-image"), article_path(article) %>
+                <% end %>
+              </div>
+              <div class="article-card-content">
+                <div>
+                  タイトル : <%= link_to article.title, article_path(article) %>
+                </div>
+                <div>
+                  ジャンル : <%= article.genre.name %>
+                </div>
+                <div>
+                  作成者　 : <%= link_to article.user.name, user_path(article.user) %>
+                </div>
+                <div>
+                  投稿日時 : <%= article.updated_at %>
+                </div>
+              </div>
+            </div>
+          <% end %>
         <% end %>
       <% end %>
     </div>

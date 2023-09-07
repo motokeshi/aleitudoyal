@@ -1,23 +1,27 @@
-<%= render "shared/header" %>
-<div class="main">
-  <h1><%= @article.title %>へのリマインダー関連付けページ</h1>
-  <div>
+<div class="main-contener">
+  <%= render "shared/sidebar" %>
+  <div class="main-wrapper">
+    <h1 class="wrapper-title"><%= @article.title %></h1>
+    <h2 class="wrapper-subtitle">リマインダー関連付けページ</h2>
+    <br>
     <%= form_with(url: search_article_path(@article), local: true, method: :get) do |f| %>
-      <%= f.text_field :keyword, placeholder: "検索したいキーワードを入力してください" %>
-      <%= f.submit "リマインダーのタイトルを検索" %>
+      <%= f.text_field :keyword, placeholder: "検索したいキーワードを入力してください", class: "search-form-textbox" %>
+      <%= f.submit "リマインダーのタイトルを検索", class:"form-submit-btn" %>
     <% end %>
-  </div>
-  <div>
-    <%= form_with(url:relation_article_path(@article), local: true, method: :post) do |f| %>
-      <% @reminders.each do |reminder| %>
-        <div>
-          <%= f.radio_button :reminder_id, :"#{reminder.id}" %>
-          <%= f.label :title, "#{reminder.title}" %>
-        </div>
+    <div class="form-wrapper">
+      <%= form_with(url:relation_article_path(@article), local: true, method: :post) do |f| %>
+        <% @reminders.each do |reminder| %>
+          <div>
+            <%= f.radio_button :article_id, "#{reminder.id}" %>
+            <%= f.label :article_id, "#{reminder.title}", value: "#{reminder.id}" %>
+          </div>
+        <% end %>
+        <%= f.submit "関連付けるリマインダーを決定する", class: "form-submit-btn" %>
       <% end %>
-      <%= f.submit "関連付けるリマインダーを決定" %>
-    <% end %>
+    </div>
+    <div class="main-btn-area">
+      <%= link_to "記事詳細へ戻る", article_path(@article), class: "main-btn" %>
+    </div>
   </div>
-  <%= link_to "記事詳細へ戻る", article_path(@article) %>
 </div>
 <%= render "shared/footer" %>

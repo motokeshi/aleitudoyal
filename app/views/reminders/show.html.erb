@@ -1,74 +1,130 @@
-<%= render "shared/header" %>
-<div class="main">
+<div class="main-contener">
+  <%= render "shared/sidebar" %>
   <div class="main-wrapper">
-    <h1 class="wrapper-title">Reminder Detail</h1>
+    <h1 class="wrapper-title">Reminder infomation</h1>
     <p class="wrapper-subtitle">リマインダー詳細</p>
-    <div class="main-contents">
-      <ul>
+    <div class="reminder-wrapper">
+      <h2 class="article-title"><%= @reminder.title %></h2>
+      <div>
         <% if @reminder.image.present? %>
-          <%= image_tag @reminder.image, class:"main-user-img" %>
+          <%= image_tag @reminder.image, class:"reminder-image" %>
         <% else %>
-          <%= image_tag "no-image.jpg", class:"main-user-img" %>
+          <%= image_tag "no-image.jpg", class:"reminder-image" %>
         <% end %>
-        <li class="main-list-item">
-          タイトル : <%= @reminder.title %>
-        </li>
-        <li class="main-list-item">
-          実施予定日 : <%= @reminder.schedule %>
-        </li>
-        <li class="main-list-item">
-          ジャンル : <% if @reminder.genre.present? %><%= @reminder.genre.name %><% end %>
-        </li>
-        <li class="main-list-item">
-          概要 : <%= @reminder.outline %>
-        </li>
-        <li class="main-list-item">
-          次回の予定 : <%= @reminder.next_schedule_calculation(@reminder.schedule, @reminder.frequency_year, @reminder.frequency_month, @reminder.frequency_week, @reminder.frequency_day) %>
-        </li>
+      </div>
+      <div class="reminder-data-area">
+        <div>
+          <p class="form-label">実施予定日</p>
+          <div class="reminder-content">
+            <%= @reminder.schedule %><br>
+          </div>
+        </div>
+        <div>
+          <p class="form-label">ジャンル</p>
+          <div class="reminder-content">
+            <% if @reminder.genre.present? %><%= @reminder.genre.name %><% end %><br>
+          </div>
+        </div>
+        <div>
+          <p class="form-label">実施頻度</p>
+          <div class="reminder-content">
+            <% if @reminder.frequency_year != 0 %>
+              <%= "#{@reminder.frequency_year}年 " %>
+            <% end %>
+            <% if @reminder.frequency_month != 0 %>
+              <%= "#{@reminder.frequency_month}月 " %>
+            <% end %>
+            <% if @reminder.frequency_week != 0 %>
+              <%= "#{@reminder.frequency_week}週 " %>
+            <% end %>
+            <% if @reminder.frequency_day != 0 %>
+              <%= "#{@reminder.frequency_day}日 " %>
+            <% end %>
+            ごと
+          </div>
+        </div>
+        <div>
+          <p class="form-label">次回の予定</p>
+          <div class="reminder-content">
+            <%= @reminder.next_schedule_calculation(@reminder.schedule, @reminder.frequency_year, @reminder.frequency_month, @reminder.frequency_week, @reminder.frequency_day) %>
+          </div>
+        </div>
+      </div>
+      <p class="form-label">リマインダーの概要</p>
+      <div class="reminder-outline">
+        <%= @reminder.outline %><br>
+      </div>
+      <div class="reminder-btn-area">
         <% unless @reminder.records.exists?(implementation_record: Date.today, reminder_id: @reminder.id) %>
-          <%= link_to "完了", reminder_records_path(@reminder), data: { turbo_method: :post }, class: "completion btn" %>
-          <%= link_to "skip", reminder_records_path(@reminder, skip: true), data: { turbo_method: :post }, class: "skip btn" %>
+          <div class="reminder-btn-area-inner">
+            <%= link_to "finish!", reminder_records_path(@reminder), data: { turbo_method: :post }, class: "reminder-finish-btn" %>
+            <%= link_to "skip", reminder_records_path(@reminder, skip: true), data: { turbo_method: :post }, class: "reminder-skip-btn" %>
+          </div>
         <% end %>
-        <%= link_to "編集", edit_reminder_path(@reminder), class: "edit btn"%>
-        <%= link_to "削除", reminder_path(@reminder), data: { turbo_method: :delete }, class: "delete btn" %>
-      </ul>
-      実施履歴:
-      <% @records.each do |record| %>
-        <%= record.implementation_record %>
-        <%= link_to "編集", edit_reminder_record_path(@reminder, record), class:"btn" %><br>
-      <% end %>
+        <% if @reminder.user_id == current_user.id %>
+          <%= link_to "リマインダー編集", edit_reminder_path(@reminder), class: "form-submit-btn"%>
+          <%= link_to "リマインダー削除", reminder_path(@reminder), data: { turbo_method: :delete }, class: "form-submit-btn" %>
+        <% end %>
+      </div>
+      <hr>
+      <p class="form-label">実施履歴</p>
+      <div class="record-wrapper">
+        <% @records.each do |record| %>
+          <div class="record-contents">
+            <%= record.implementation_record %>
+            <%= link_to "履歴を編集", edit_reminder_record_path(@reminder, record), class:"record-edit-btn" %><br>
+          </div>
+        <% end %>
+      </div>
     </div>
-    <p class="wrapper-subtitle">Article設定</p>
+    <br>
+    <p class="wrapper-subtitle">関連するDoyal記事</p>
     <% @articles.each do |article| %>
-      <div class="main-contents">
-        <ul>
-          <% if article.image.present? %>
-            <%= image_tag article.image, class:"main-user-img" %>
-          <% else %>
-            <%= image_tag "no-image.jpg", class:"main-user-img" %>
-          <% end %>
-          <li class="main-list-item">
-            タイトル : <%= article.title %>
-          </li>
-          <li class="main-list-item">
-            ジャンル : <% if article.genre.present? %><%= article.genre.name %><% end %>
-          </li>
-          <li class="main-list-item">
-            作成者 : <%= article.user.name %>
-          </li>
-          <% if article.user_id == current_user.id %>
-            <%= link_to "編集", edit_article_path(article), class: "edit btn"%>
-            <%= link_to "削除", article_path(article), data: { turbo_method: :delete }, class: "delete btn" %>
-          <% end %>
-        </ul>
-        <%= render partial: "posts/index", locals: { article: article, posts: article.posts } %>
-        <% if article.user_id == current_user.id %>
-          <%= link_to "内容を追加する", new_article_post_path(article), class: "btn" %>
+      <div class="article-card-wrapper">
+        <div class="article-card-header">
+          <div class="article-card-image">
+            <% if article.image.present? %>
+              <%= link_to image_tag(article.image, class: "article-card-image"), article_path(article) %>
+            <% else %>
+              <%= link_to image_tag("no-image.jpg", class: "article-card-image"), article_path(article) %>
+            <% end %>
+          </div>
+          <div class="article-card-content">
+            <div>
+              タイトル : <%= link_to article.title, article_path(article) %>
+            </div>
+            <div>
+              ジャンル : <%= article.genre.name %>
+            </div>
+            <div>
+              作成者　 : <%= link_to article.user.name, user_path(article.user) %>
+            </div>
+            <div>
+              投稿日時 : <%= article.updated_at %>
+            </div>
+          </div>
+        </div>
+        <hr>
+        <p class="form-label">Doyal memo</p>
+        <% article.posts.each do |post| %>
+          <div class="post-contents">
+            <% if post.image.present? %>
+              <div class="post-image-area">
+                <%= image_tag post.image, class: "post-image" %>
+              </div>
+            <% end %>
+            <div class="post-text">
+              <%= post.text %>
+            </div>
+          </div>
+          <hr class="post-hr">
         <% end %>
-        <%= button_to "この記事との関連付けを取り消す", cancellation_reminder_path(@reminder.id, article.id), method: "delete" %>
+        <%= button_to "この記事との関連付けを取り消す", cancellation_reminder_path(@reminder.id, article.id), method: "delete", class: "record-edit-btn" %>
       </div>
     <% end %>
-    <%= link_to "article設定ページへ移動", search_reminder_path(@reminder) %>
+    <div class="main-btn-area">
+      <%= link_to "Doyalとの関連付けページへ移動", search_reminder_path(@reminder), class: "main-btn" %>
+    </div>
   </div>
 </div>
 <%= render "shared/footer" %>

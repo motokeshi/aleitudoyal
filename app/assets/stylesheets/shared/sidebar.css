@@ -1,3 +1,80 @@
+.main-btn-area {
+  margin: 20px auto;
+}
+
+.main-btn {
+  padding: 10px;
+  border-radius: 10px;
+  border: 2px solid black;
+  font-weight: bold;
+  text-decoration: none;
+  color: black;
+}
+
+.main-btn:hover {
+  color: whitesmoke;
+  background-color: black;
+  box-shadow: 0 0 10px gray;
+}
+
+.form-wrapper {
+  padding: 20px;
+  margin: 10px;
+  border-radius: 10px;
+  text-align: center;
+  background-color: whitesmoke;
+  box-shadow: 0 0 12px gray;
+}
+
+.form-group {
+  align-items: center;
+  margin: 10px;
+}
+
+.form-label {
+  font-weight: bold;
+  color: dimgray;
+}
+
+.form-input-field {
+  margin-top: 3px;
+  width: 400px;
+  border: 1px solid dimgray;
+  border-radius: 10px;
+  padding: 5px;
+}
+
+.form-textbox {
+  margin-top: 3px;
+  width: 450px;
+  border: 1px solid dimgray;
+  border-radius: 10px;
+  padding: 5px;
+}
+
+.form-number-field {
+  width: 50px;
+  margin: 3px;
+  text-align: center;
+}
+
+.form-submit-btn {
+  margin: 10px;
+  padding: 5px;
+  border-radius: 10px;
+  border: 2px solid gray;
+  font-weight: bold;
+  color: dimgray;
+  text-decoration: none;
+  background-color: whitesmoke;
+}
+
+.form-submit-btn:hover {
+  color: whitesmoke;
+  background-color: dimgray;
+  cursor: pointer;
+}
+
 .main-contener {
   display: flex;
 }
@@ -93,8 +170,8 @@
 }
 
 .wrapper-subtitle {
-  border-bottom: grey solid 1px;
-  color: gray;
+  border-bottom: dimgrey solid 1px;
+  color: dimgray;
 }
 
 .logout {
@@ -121,12 +198,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 0 5px;
+  /* margin: 0 5px; */
   border-radius: 5px;
-  padding: 1px;
+  padding: 2px;
   text-decoration: none;
   font-weight: bold;
   color: black;
+  cursor: pointer;
 }
 
 .registration {
@@ -137,4 +215,27 @@
 .registration:hover {
   background-color: black;
   color: #fff;
+}
+
+.btn-field {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.delete-btn {
+  display: none;
+  margin-top: 20px;
+  color: orangered;
+  font-weight: bold;
+}
+
+.delete-btn-inner {
+  display: flex;
+  justify-content: space-between;
+}
+
+input[type="checkbox"]:checked ~ .delete-btn {
+  display: block;
 }

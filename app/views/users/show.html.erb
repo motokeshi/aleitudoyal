@@ -1,41 +1,103 @@
-<%= render "shared/header" %>
-<div class="main">
+<div class="main-contener">
+  <%= render "shared/sidebar" %>
   <div class="main-wrapper">
     <h1 class="wrapper-title">User Profile</h1>
     <p class="wrapper-subtitle">ユーザー詳細</p>
-    <div class="main-contents">
+    <div class="form-wrapper">
       <ul>
         <% if @user.image.present? %>
-          <%= image_tag @user.image, class:"main-user-img" %>
+          <%= image_tag @user.image, class: "user-image" %>
           <% if user_signed_in? && @user == current_user %>
-            <%= link_to "サムネイルを削除する", user_path(@user, thumb: true), data: { turbo_method: :delete } %>
+            <div class="user-info-btn-area">
+              <%#= link_to "サムネイルを削除する", user_path(@user, thumb: true), data: { turbo_method: :delete }, class: "form-submit-btn" %>
+              <%= check_box "delete", "image", { style: "display: none;" } %>
+              <%= label "delete", "image", "サムネイルを削除する", class: "form-submit-btn" %>
+              <div class="delete-btn">
+                <p>サムネイル画像を削除しますか？</p>
+                <div class="delete-btn-inner">
+                  <%= link_to "削除する", user_path(@user, thumb: true), data: { turbo_method: :delete }, class: "form-submit-btn" %>
+                  <%= label "delete", "image", "キャンセル", class: "form-submit-btn" %>
+                </div>
+              </div>
+            </div>
           <% end %>
         <% else %>
-          <%= image_tag "no-image.jpg", class:"main-user-img" %>
+          <%= image_tag "no-image.jpg", class:"user-image" %>
         <% end %>
         <li class="main-list-item">
-          ユーザー名 : <%= @user.name %>
+          <p class="form-label">ユーザー名</p>
+          <div class="user-info-content">
+            <%= @user.name %>
+          </div>
+        </li>
+        <%# <li class="main-list-item"> %>
+          <%# <p class="form-label">メッセージ</p><%= @user.message %>
+        <%# </li> %>
+        <li class="main-list-item">
+          <p class="form-label">主なジャンル</p>
+          <div class="user-info-content">
+            <% if @user.genre.present? %><%= @user.genre.name %><% end %>
+          </div>
         </li>
         <li class="main-list-item">
-          メッセージ : <%= @user.message %>
-        </li>
-        <li class="main-list-item">
-          メインジャンル : <% if @user.genre.present? %><%= @user.genre.name %><% end %>
-        </li>
-        <li class="main-list-item">
-          フリーメッセージ : <%= @user.text %>
+          <p class="form-label">メッセージ</p>
+          <div class="user-info-content">
+            <%= @user.text %>
+            <% if @user.text == "" %>
+              ---
+            <% end %>
+          </div>
         </li>
       </ul>
       <% if user_signed_in? && @user == current_user %>
-        <%= link_to "ユーザー情報編集", edit_user_path(@user), class: "btn" %>
-        <%= link_to "！ユーザー削除！", "#", data: { turbo_method: :delete }, class: "btn" %>
+        <div class="btn-field">
+          <div>
+            <%= link_to "ユーザー情報編集", edit_user_path(@user), class: "form-submit-btn" %>
+          </div>
+          <div>
+            <%= check_box "delete", "user", { style: "display: none;" } %>
+            <%= label "delete", "user", "アカウント削除", class: "form-submit-btn" %>
+            <div class="delete-btn">
+              <p>削除すると元に戻せません<br>本当によろしいですか？</p>
+              <div class="main-btn-area">
+                <%= label "delete", "user", "キャンセル", class: "form-submit-btn" %>
+              </div>
+              <div class="main-btn-area">
+                <%= link_to "アカウントを削除する", user_path(@user), data: { turbo_method: :delete }, class: "form-submit-btn" %>
+              </div>
+            </div>
+          </div>
+        </div>
       <% end %>
     </div>
-    <h1 class="wrapper-title">Recent Articles</h1>
     <p class="wrapper-subtitle"><%= "#{@user.name}" %>さんの最近の投稿</p>
-    ■<br>
-    dammy<br>
-    ■
+    <% @articles.each do |article| %>
+      <div class="article-card-wrapper">
+        <div class="article-card-header">
+          <div class="article-card-image">
+            <% if article.image.present? %>
+              <%= link_to image_tag(article.image, class: "article-card-image"), article_path(article) %>
+            <% else %>
+              <%= link_to image_tag("no-image.jpg", class: "article-card-image"), article_path(article) %>
+            <% end %>
+          </div>
+          <div class="article-card-content">
+            <div>
+              タイトル : <%= link_to article.title, article_path(article) %>
+            </div>
+            <div>
+              ジャンル : <%= article.genre.name %>
+            </div>
+            <div>
+              作成者　 : <%= link_to article.user.name, user_path(article.user) %>
+            </div>
+            <div>
+              投稿日時 : <%= article.updated_at %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
   </div>
 </div>
 <%= render "shared/footer" %>
