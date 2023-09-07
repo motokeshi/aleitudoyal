@@ -35,6 +35,36 @@
           </div>
         <% end %>
       <% end %>
+      <% if user_signed_in? %>
+        <p class="wrapper-subtitle">非公開設定のDoyal</p>
+        <% @articles.each do |article| %>
+          <% if article.release == false %>
+            <div class="main-contents-card">
+              <div class="article-card-image">
+                <% if article.image.present? %>
+                  <%= link_to image_tag(article.image, class: "article-card-image"), article_path(article) %>
+                <% else %>
+                  <%= link_to image_tag("no-image.jpg", class: "article-card-image"), article_path(article) %>
+                <% end %>
+              </div>
+              <div class="article-card-content">
+                <div>
+                  タイトル : <%= link_to article.title, article_path(article) %>
+                </div>
+                <div>
+                  ジャンル : <%= article.genre.name %>
+                </div>
+                <div>
+                  作成者　 : <%= link_to article.user.name, user_path(article.user) %>
+                </div>
+                <div>
+                  投稿日時 : <%= article.updated_at %>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+      <% end %>
     </div>
   </div>
 </div>
