@@ -13,10 +13,10 @@
           <%= link_to reminder.title, reminder_path(reminder), class: "btn" %>
         </div>
         <div class="main-contents-right-inner">
-          <%# unless reminder.records.exists?(implementation_record: Date.today, reminder_id: reminder.id) %>
-            <%#= link_to "finish!", reminder_records_path(reminder), data: { turbo_method: :post }, class: "completion btn" %>
-            <%#= link_to "skip", reminder_records_path(reminder, skip: true), data: { turbo_method: :post }, class: "skip btn" %>
-          <%# end %>
+          <% unless reminder.records.exists?(implementation_record: Date.today, reminder_id: reminder.id) %>
+            <%= link_to "finish!", reminder_records_path(reminder), data: { turbo_method: :post }, class: "completion btn" %>
+            <%= link_to "skip", reminder_records_path(reminder, skip: true), data: { turbo_method: :post }, class: "skip btn" %>
+          <% end %>
           <div class="remind-next-schedule">
             次回予定<br>
             <%= next_schedule = reminder.next_schedule_calculation(reminder.schedule, reminder.frequency_year, reminder.frequency_month, reminder.frequency_week, reminder.frequency_day) %>
