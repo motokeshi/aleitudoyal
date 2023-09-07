@@ -8,15 +8,36 @@
       <% if @article.image.present? %>
         <%= image_tag @article.image, class:"article-image" %>
       <% else %>
-        <%= image_tag "no-image.jpg", class:"main-user-img" %>
+        <%= image_tag "no-image.jpg", class:"article-image" %>
       <% end %>
       <br>
-      <p>ジャンル : <% if @article.genre.present? %><%= @article.genre.name %><% end %></p>
-      <p>作成者 : <%= @article.user.name %></p>
+      <p class="form-label">ジャンル</p>
+      <div class="article-info-content">
+        <% if @article.genre.present? %><%= @article.genre.name %><% end %>
+      </div>
+      <p class="form-label">作成者</p>
+      <div class="article-info-content">
+        <%= @article.user.name %>
+      </div>
+      <br>
       <% if user_signed_in? && @article.user_id == current_user.id %>
         <div class="article-btn-area">
-          <%= link_to "編集", edit_article_path(@article), class: "form-submit-btn"%>
-          <%= link_to "！削除！", article_path(@article), data: { turbo_method: :delete }, class: "form-submit-btn" %>
+          <div>
+            <%= link_to "概要を編集する", edit_article_path(@article), class: "form-submit-btn"%>
+          </div>
+          <%#= link_to "！削除！", article_path(@article), data: { turbo_method: :delete }, class: "form-submit-btn" %>
+          <div>
+            <%= check_box "delete", "article", { style: "display: none;" } %>
+            <%= label "delete", "article", "この記事を削除する", class: "form-submit-btn" %>
+            <div class="delete-btn">
+              <p>元に戻せません</p>
+              <p>削除しますか？</p>
+              <div class="delete-btn-inner">
+                <%= link_to "削除する", article_path(@article), data: { turbo_method: :delete }, class: "form-submit-btn" %>
+                <%= label "delete", "article", "キャンセル", class: "form-submit-btn" %>
+              </div>
+            </div>
+          </div>
         </div>
       <% end %>
       <br>
@@ -35,8 +56,20 @@
         </div>
         <% if user_signed_in? && @article.user_id == current_user.id %>
           <div class="article-btn-area">
-            <%= link_to "このmemoを編集する", edit_article_post_path(@article, post), class: "form-submit-btn"%>
-            <%= link_to "！このmemoを削除する！", article_post_path(@article, post), data: { turbo_method: :delete }, class: "form-submit-btn" %>
+            <div>
+              <%= link_to "このメモを編集する", edit_article_post_path(@article, post), class: "form-submit-btn"%>
+            </div>
+            <div>
+              <%= check_box "delete", "#{post.id}", { style: "display: none;" } %>
+              <%= label "delete", "#{post.id}", "このメモを削除する", class: "form-submit-btn" %>
+              <div class="delete-btn">
+                <p>削除しますか？</p>
+                <div class="delete-btn-inner">
+                  <%= link_to "削除する", article_post_path(@article, post), data: { turbo_method: :delete }, class: "form-submit-btn" %>
+                  <%= label "delete", "#{post.id}", "キャンセル", class: "form-submit-btn" %>
+                </div>
+              </div>
+            </div>
           </div>
         <% end %>
         <hr class="post-hr">
