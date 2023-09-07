@@ -36,14 +36,19 @@
         <li class="main-list-item">
           <p class="form-label">主なジャンル</p>
           <div class="user-info-content">
-            <% if @user.genre.present? %><%= @user.genre.name %><% end %>
+            <% if @user.genre.present? %>
+              <%= @user.genre.name %>
+            <% else %>
+              ---
+            <% end %>
           </div>
         </li>
         <li class="main-list-item">
           <p class="form-label">メッセージ</p>
           <div class="user-info-content">
-            <%= @user.text %>
-            <% if @user.text == "" %>
+            <% if @user.text != nil %>
+              <%= @user.text %>
+            <% else %>
               ---
             <% end %>
           </div>
@@ -60,10 +65,10 @@
             <div class="delete-btn">
               <p>削除すると元に戻せません<br>本当によろしいですか？</p>
               <div class="main-btn-area">
-                <%= label "delete", "user", "キャンセル", class: "form-submit-btn" %>
+                <%= link_to "アカウントを削除する", user_path(@user), data: { turbo_method: :delete }, class: "form-submit-btn" %>
               </div>
               <div class="main-btn-area">
-                <%= link_to "アカウントを削除する", user_path(@user), data: { turbo_method: :delete }, class: "form-submit-btn" %>
+                <%= label "delete", "user", "キャンセル", class: "form-submit-btn" %>
               </div>
             </div>
           </div>

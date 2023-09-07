@@ -38,7 +38,7 @@
       <% if user_signed_in? %>
         <p class="wrapper-subtitle">非公開設定のDoyal</p>
         <% @articles.each do |article| %>
-          <% if article.release == false %>
+          <% if article.release == false && article.user_id == current_user.id %>
             <div class="main-contents-card">
               <div class="article-card-image">
                 <% if article.image.present? %>
