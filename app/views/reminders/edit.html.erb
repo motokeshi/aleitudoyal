@@ -1,42 +1,50 @@
-<%= render "shared/header" %>
-<div class="main">
-  <h1>Reminder Detail Editer</h1>
-  <p class="wrapper-subtitle">リマインダー編集ページ</p>
-  <div class='form-wrap'>
-    <%= form_with model: @reminder, local: true do |f| %>
-
-      <%= render 'shared/error_messages', model: f.object %>
-
-      <div class="form-group">
-        <label class="form-text">サムネイル画像</label>
-        <%= f.file_field :image, class:"user-image", id:"reminder-image" %>
-      </div>
-      <div class="form-group">
-        <label class="form-text">リマインドのタイトル</label>
-        <%= f.text_area :title, class:"input-default", id:"title", placeholder:"タイトル", autofocus: true %>
-      </div>
-      <div class="form-group">
-        <label class="form-text">リマインドのジャンル</label>
-        <%= f.collection_select(:genre_id, Genre.all, :id, :name, {}, {class:"genre-select"}) %>
-      </div>
-      <div class="form-group">
-        <label class="form-text">リマインドの概要</label>
-        <%= f.text_area :outline, class:"input-default", id:"outline" %>
-      </div>
-      <div class="frequency-date-group">
-        <label class="form-text">リマインドの頻度</label>
-        <%= f.number_field :frequency_year, min: 0 %>年<br>
-        <%= f.number_field :frequency_month, min: 0 %>月<br>
-        <%= f.number_field :frequency_week, min: 0 %>週<br>
-        <%= f.number_field :frequency_day, min: 0 %>日<br>
-      </div>
-      <div class="form-group">
-        <label class="form-text">次回リマインド予定</label>
-        <%= f.date_field :schedule, class:"input-default", id:"schedule" %>
-      </div>
-      <%= link_to "キャンセル", reminders_path, class: "btn" %>
-      <%= f.submit "Edit Reminder!" ,class:"btn" %>
-    <% end %>
+<div class="main-contener">
+  <%= render "shared/sidebar" %>
+  <div class="main-wrapper">
+    <h1 class="wrapper-title">Reminder Editer</h1>
+    <p class="wrapper-subtitle">リマインダー編集ページ</p>
+    <div class="form-wrapper">
+      <%= form_with model: @reminder, local: true do |f| %>
+        <%= render 'shared/error_messages', model: f.object %>
+        <div class="form-group">
+          <label class="form-label">サムネイル画像</label>
+          <br>
+          <%= f.file_field :image, class:"form-input-field", id:"reminder-image" %>
+        </div>
+        <div class="form-group">
+          <label class="form-label">リマインドのタイトル ※必須</label>
+          <br>
+          <%= f.text_area :title, class:"form-input-field", id:"title", placeholder:"タイトル", autofocus: true %>
+        </div>
+        <div class="form-group">
+          <label class="form-label">リマインドのジャンル</label>
+          <br>
+          <%= f.collection_select(:genre_id, Genre.all, :id, :name, {}, {class:"form-input-field"}) %>
+        </div>
+        <div class="form-group">
+          <label class="form-label">リマインドの概要</label>
+          <br>
+          <%= f.text_area :outline, class:"form-input-field", id:"outline" %>
+        </div>
+        <div class="frequency-date-group">
+          <label class="form-label">リマインドの頻度 ※必須</label>
+          <br>
+          <%= f.number_field :frequency_year, min: 0, class:"form-number-field" %>年<br>
+          <%= f.number_field :frequency_month, min: 0, class:"form-number-field" %>月<br>
+          <%= f.number_field :frequency_week, min: 0, class:"form-number-field" %>週<br>
+          <%= f.number_field :frequency_day, min: 0, class:"form-number-field" %>日<br>
+        </div>
+        <div class="form-group">
+          <label class="form-label">次回リマインド予定 ※必須</label>
+          <br>
+          <%= f.date_field :schedule, class:"form-input-field", id:"schedule" %>
+        </div>
+        <%= f.submit "Edit Reminder!" ,class:"form-submit-btn" %>
+      <% end %>
+    </div>
+    <div class="main-btn-area">
+      <%= link_to "キャンセル", reminders_path, class: "main-btn" %>
+    </div>
   </div>
 </div>
 <%= render "shared/footer" %>
