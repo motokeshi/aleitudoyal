@@ -131,8 +131,8 @@
                     <%= image_tag "no-image.jpg", class: "reminder-card-image" %>
                   <% end %>
                 </div>
-                <div>
-                  <%= reminder.title %>
+                <div class="reminder-card-contents">
+                  <%= link_to reminder.title, reminder_path(reminder), class: "article-title" %>
                   <%= button_to "このリマインダーとの関連付けを解除", cancellation_article_path(@article.id, reminder.id), method: "delete", class: "form-submit-btn" %>
                 </div>
               </div>

@@ -49,7 +49,7 @@ class ArticlesController < ApplicationController
   end
 
   def relation
-    reminder_article = ReminderArticle.new(reminder_id: params[:reminder_id], article_id: params[:id])
+    reminder_article = ReminderArticle.new(reminder_id: params[:article_id], article_id: params[:id])
     reminder_article.save
     redirect_to article_path(params[:id])
   end

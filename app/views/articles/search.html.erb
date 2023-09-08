@@ -11,10 +11,21 @@
     <div class="form-wrapper">
       <%= form_with(url:relation_article_path(@article), local: true, method: :post) do |f| %>
         <% @reminders.each do |reminder| %>
-          <div>
-            <%= f.radio_button :article_id, "#{reminder.id}" %>
-            <%= f.label :article_id, "#{reminder.title}", value: "#{reminder.id}" %>
-          </div>
+          <%= f.label(:article_id, "#{reminder.title}", value: "#{reminder.id}") do %>
+            <div class="reminder-card">
+              <%= f.radio_button :article_id, "#{reminder.id}" %>
+              <div class="reminder-card-image">
+                <% if reminder.image.present? %>
+                  <%= image_tag reminder.image, class: "reminder-card-image" %>
+                <% else %>
+                  <%= image_tag "no-image.jpg", class: "reminder-card-image" %>
+                <% end %>
+              </div>
+              <div class="reminder-card-contents">
+                <p class="article-title"><%= reminder.title %></p>
+              </div>
+            </div>
+          <% end %>
         <% end %>
         <%= f.submit "関連付けるリマインダーを決定する", class: "form-submit-btn" %>
       <% end %>
