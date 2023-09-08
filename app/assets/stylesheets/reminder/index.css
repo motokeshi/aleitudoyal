@@ -60,7 +60,8 @@
 .reminder-btn-area {
   display: flex;
   justify-content: space-around;
-  align-items: center;
+  align-items: start;
+  padding-top: 10px;
 }
 
 .reminder-btn-area-inner {
@@ -99,6 +100,10 @@
 .reminder-skip-btn:hover {
   color: whitesmoke;
   background-color: royalblue;
+}
+
+.reminder-delete-btn-area {
+  padding-top: 6px;
 }
 
 .record-wrapper {

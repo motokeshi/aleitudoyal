@@ -63,7 +63,19 @@
         <% end %>
         <% if @reminder.user_id == current_user.id %>
           <%= link_to "リマインダー編集", edit_reminder_path(@reminder), class: "form-submit-btn"%>
-          <%= link_to "リマインダー削除", reminder_path(@reminder), data: { turbo_method: :delete }, class: "form-submit-btn" %>
+          <%#= link_to "リマインダー削除", reminder_path(@reminder), data: { turbo_method: :delete }, class: "form-submit-btn" %>
+          <div class="reminder-delete-btn-area">
+            <%= check_box "delete", "reminder", { style: "display: none;" } %>
+            <%= label "delete", "reminder", "リマインダーを削除", class: "form-submit-btn" %>
+            <div class="delete-btn">
+              <p>元に戻せません</p>
+              <p>削除しますか？</p>
+              <div class="delete-btn-inner">
+                <%= link_to "削除", reminder_path(@reminder), data: { turbo_method: :delete }, class: "form-submit-btn" %>
+                <%= label "delete", "reminder", "キャンセル", class: "form-submit-btn" %>
+              </div>
+            </div>
+          </div>
         <% end %>
       </div>
       <hr>
@@ -91,7 +103,7 @@
           </div>
           <div class="article-card-content">
             <div>
-              タイトル : <%= link_to article.title, article_path(article) %>
+              タイトル : <%= link_to article.title, article_path(article), class: "article-title" %>
             </div>
             <div>
               ジャンル : <%= article.genre.name %>
