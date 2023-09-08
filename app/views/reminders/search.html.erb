@@ -11,10 +11,30 @@
     <div class="form-wrapper">
       <%= form_with(url:relation_reminder_path(@reminder), local: true, method: :post) do |f| %>
         <% @articles.each do |article| %>
-          <div>
-            <%= f.radio_button :article_id, "#{article.id}" %>
-            <%= f.label :article_id, "#{article.title}", value: "#{article.id}" %>
-          </div>
+          <% if article.release == true || article.user_id == current_user.id %>
+            <%= f.label(:article_id, "#{article.title}", value: "#{article.id}") do %>
+              <div class="article-card-wrapper">
+                <div class="article-card-header">
+                  <%= f.radio_button :article_id, "#{article.id}" %>
+                  <div class="article-card-image">
+                    <% if article.image.present? %>
+                      <%= image_tag article.image, class: "article-card-image" %>
+                    <% else %>
+                      <%= image_tag "no-image.jpg", class: "article-card-image" %>
+                    <% end %>
+                  </div>
+                  <div class="article-card-content">
+                    <p class="article-title"><%= article.title %></p>
+                    ジャンル : <%= article.genre.name %>
+                    <br>
+                    作成者　 : <%= article.user.name %>
+                    <br>
+                    投稿日時 : <%= article.updated_at %>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
         <% end %>
         <%= f.submit "関連付けるDoyalを決定する", class: "form-submit-btn" %>
       <% end %>

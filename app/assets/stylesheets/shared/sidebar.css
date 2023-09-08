@@ -138,10 +138,9 @@
 
 .sidebar-user-image {
   margin: 5px;
-  width: 190px;
-  height: 80px;
-  border-radius: 20%;
-  border: gray 4px solid;
+  width: 160px;
+  height: 120px;
+  border-radius: 10%;
   object-fit: cover;
 }
 

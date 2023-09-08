@@ -29,7 +29,7 @@ class RemindersController < ApplicationController
 
   def update
     if @reminder.update(reminder_params)
-      redirect_to reminders_path
+      redirect_to reminder_path(@reminder)
     else
       render :edit, status: :unprocessable_entity
     end
