@@ -9,6 +9,8 @@ class Article < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :genre
 
+  validates :title, presence: true
+
   def self.articles_search(search)
     if search != ""
       Article.where('title LIKE(?)', "%#{search}%")

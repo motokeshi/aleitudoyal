@@ -16,9 +16,9 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    article = Article.new(article_params)
-    if article.save
-      redirect_to new_article_post_path(article)
+    @article = Article.new(article_params)
+    if @article.save
+      redirect_to new_article_post_path(@article)
     else
       render :new, status: :unprocessable_entity
     end
@@ -40,7 +40,7 @@ class ArticlesController < ApplicationController
   def destroy
     article_set
     @article.destroy
-    redirect_to root_path
+    redirect_to articles_path
   end
 
   def search

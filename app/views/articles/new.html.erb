@@ -11,7 +11,7 @@
           <%= f.file_field :image, id:"article-image" %>
         </div>
         <div class="form-group">
-          <label class="form-label">投稿記事のタイトル</label><br>
+          <label class="form-label">投稿記事のタイトル ※必須</label><br>
           <%= f.text_area :title, class:"form-input-field", id:"title", placeholder:"タイトル", autofocus: true %>
         </div>
         <div class="form-group">
@@ -19,7 +19,7 @@
           <%= f.collection_select(:genre_id, Genre.all, :id, :name, {}, {class:"form-input-field"}) %>
         </div>
         <div class="form-group">
-          <label class="form-label">公開の可否</label><br>
+          <label class="form-label">公開の可否 ※必須</label><br>
           <%= f.radio_button :release, true %>
           <%= f.label :release_true, "公開する" %>
           <%= f.radio_button :release, false %>
@@ -29,7 +29,7 @@
       <% end %>
     </div>
     <div class="main-btn-area">
-      <%= link_to "キャンセルして戻る", :back, class: "main-btn" %>
+      <%= link_to "キャンセルして戻る", articles_path, class: "main-btn" %>
     </div>
   </div>
 </div>
