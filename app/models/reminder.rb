@@ -8,6 +8,10 @@ class Reminder < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :genre
 
+  validates :title, presence: true
+  validates :schedule, presence: true
+  validates :frequency_day, numericality: {greater_than: 0, message: "or week or month or year can't be 0"}, unless: :frequency_input?
+
   def next_schedule_calculation(schedule, frequency_year, frequency_month, frequency_week, frequency_day)
     if frequency_year > 0
       schedule = schedule >> (frequency_year * 12)
@@ -30,5 +34,10 @@ class Reminder < ApplicationRecord
     else
       Reminder.where(user_id: user_id)
     end
+  end
+
+  def frequency_input?
+    frequency = self.frequency_year + self.frequency_month + self.frequency_week + self.frequency_day
+    return frequency > 0
   end
 end
