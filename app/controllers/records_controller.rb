@@ -10,6 +10,8 @@ class RecordsController < ApplicationController
     reminder.update(schedule: new_schedule)
     if params[:root]
       redirect_to root_path
+    elsif params[:show]
+      redirect_to reminder_path(reminder)
     else
       redirect_to reminders_path
     end
