@@ -1,13 +1,14 @@
 class PostsController < ApplicationController
   def new
-    @article = Article.find(params[:article_id])
+    set_article
     @posts = @article.posts
     @post = Post.new
   end
 
   def create
-    post = Post.new(post_params)
-    if post.save
+    set_article
+    @post = Post.new(post_params)
+    if @post.save
       redirect_to new_article_post_path(params[:article_id])
     else
       render :new, status: :unprocessable_entity
@@ -20,8 +21,8 @@ class PostsController < ApplicationController
   end
 
   def update
-    post = Post.find(params[:id])
-    if post.update(post_params)
+    set_post
+    if @post.update(post_params)
       redirect_to article_path(params[:article_id])
     else
       render :edit, status: :unprocessable_entity
@@ -42,5 +43,9 @@ class PostsController < ApplicationController
 
   def set_post
     @post = Post.find(params[:id])
+  end
+
+  def set_article
+    @article = Article.find(params[:article_id])
   end
 end
