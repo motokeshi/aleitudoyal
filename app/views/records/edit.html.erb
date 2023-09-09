@@ -1,20 +1,32 @@
-<%= render "shared/header" %>
-<div class="main">
-  <h1>Record Editer</h1>
-  <p class="wrapper-subtitle">レコード編集ページ</p>
-  <%= link_to "履歴を削除", reminder_record_path(@reminder, @record), data: { turbo_method: :delete}, class:"btn" %>
-  <div class='form-wrap'>
-    <%= form_with model: [@reminder, @record], local: true do |f| %>
-
-      <%= render 'shared/error_messages', model: f.object %>
-
-      <div class="form-group">
-        <label class="form-text">実施履歴</label>
-        <%= f.date_field :implementation_record, class:"input-default", id:"implementation_record" %>
+<div class="main-contener">
+  <%= render "shared/sidebar" %>
+  <div class="main-wrapper">
+    <h1 class="wrapper-title">Record Edit</h2>
+    <p class="wrapper-subtitle">レコード編集ページ</p>
+    <div class="main-btn-area">
+      <%= check_box "delete", "record", { style: "display: none;" } %>
+      <%= label "delete", "record", "履歴を削除する", class: "main-btn" %>
+      <div class="delete-btn">
+        <p>削除しますか？</p>
+        <div class="delete-btn-inner-record">
+          <%= link_to "削除する", reminder_record_path(@reminder, @record), data: { turbo_method: :delete }, class: "main-btn" %>
+          <%= label "delete", "record", "キャンセル", class: "main-btn" %>
+        </div>
       </div>
-      <%= link_to "キャンセル", :back, class: "btn" %>
-      <%= f.submit "Edit Record!" ,class:"btn" %>
-    <% end %>
+    </div>
+    <div class="form-wrapper">
+      <%= form_with model: [@reminder, @record], local: true do |f| %>
+        <%= render 'shared/error_messages', model: f.object %>
+        <div class="form-group">
+          <label class="form-label">実施履歴</label>
+          <%= f.date_field :implementation_record, class:"form-input-field", id:"implementation_record" %>
+        </div>
+        <%= f.submit "Edit Record!" ,class:"form-submit-btn" %>
+      <% end %>
+    </div>
+    <div class="main-btn-area">
+      <%= link_to "リマインダー詳細へ戻る", reminder_path(@reminder), class: "main-btn" %>
+    </div>
   </div>
 </div>
 <%= render "shared/footer" %>

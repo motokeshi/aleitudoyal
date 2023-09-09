@@ -12,6 +12,14 @@
   text-align: left;
 }
 
+.delete-btn-inner-record {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
+  margin: 0 auto;
+  width: 250px;
+}
+
 .remind-date {
   display: flex;
   justify-content: center;
