@@ -57,18 +57,16 @@ https://docs.google.com/spreadsheets/d/1McREI74N2XKN0p3ukczWveXjhy9VAI8qFQ3ZrCLY
 * リマインダーとDoyalの関連付け
 [![Image from Gyazo](https://i.gyazo.com/93f193d44f836a9993887606e2eabedd.gif)](https://gyazo.com/93f193d44f836a9993887606e2eabedd)
 
+
 # 実装予定の機能
 今後は以下の機能を実装していく予定です。
 * ユーザーのグループを作成し、グループでリマインダーを共有する機能
 * 設定したジャンルでDoyalやユーザーを検索する機能
 * お気に入りのユーザーをフォローする機能
-# データベース設計
-
 # 画面遷移図
 https://docs.google.com/spreadsheets/d/1dc9p5378a16hPYYTydRQ0Ujdg2pYyo6_ty7HVVws5Kk/edit?usp=drive_link
 # 開発環境
 Ruby/Ruby on Rails/JavaScript/MySQL/Github/Visual Studio Code
-# ローカルでの動作方法
 # 工夫したポイント
 リマインダーとしての使いやすさと、見た目のシンプルさ・統一感を損なわないように意識しています。
 # 改善点
