@@ -5,7 +5,7 @@
     <p class="wrapper-subtitle">レコード編集ページ</p>
     <div class="main-btn-area">
       <%= check_box "delete", "record", { style: "display: none;" } %>
-      <%= label "delete", "record", "履歴を削除する", class: "main-btn" %>
+      <%= label "delete", "record", "この履歴を削除する", class: "main-btn" %>
       <div class="delete-btn">
         <p>削除しますか？</p>
         <div class="delete-btn-inner-record">
@@ -21,11 +21,11 @@
           <label class="form-label">実施履歴</label>
           <%= f.date_field :implementation_record, class:"form-input-field", id:"implementation_record" %>
         </div>
-        <%= f.submit "Edit Record!" ,class:"form-submit-btn" %>
+        <%= f.submit "編集内容を確定する" ,class:"form-submit-btn" %>
       <% end %>
     </div>
     <div class="main-btn-area">
-      <%= link_to "リマインダー詳細へ戻る", reminder_path(@reminder), class: "main-btn" %>
+      <%= link_to "キャンセル", reminder_path(@reminder), class: "main-btn" %>
     </div>
   </div>
 </div>

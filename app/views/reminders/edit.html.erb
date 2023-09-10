@@ -39,11 +39,11 @@
           <br>
           <%= f.date_field :schedule, class:"form-input-field", id:"schedule" %>
         </div>
-        <%= f.submit "Edit Reminder!" ,class:"form-submit-btn" %>
+        <%= f.submit "編集内容を確定する" ,class:"form-submit-btn" %>
       <% end %>
     </div>
     <div class="main-btn-area">
-      <%= link_to "キャンセル", reminders_path, class: "main-btn" %>
+      <%= link_to "キャンセル", reminder_path(@reminder), class: "main-btn" %>
     </div>
   </div>
 </div>
