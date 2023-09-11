@@ -63,6 +63,8 @@ https://docs.google.com/spreadsheets/d/1McREI74N2XKN0p3ukczWveXjhy9VAI8qFQ3ZrCLY
 * ユーザーのグループを作成し、グループでリマインダーを共有する機能
 * 設定したジャンルでDoyalやユーザーを検索する機能
 * お気に入りのユーザーをフォローする機能
+# データベース設計
+[![Image from Gyazo](https://i.gyazo.com/cd3914cd3dc987e7bc467002e939e32f.png)](https://gyazo.com/cd3914cd3dc987e7bc467002e939e32f)
 # 画面遷移図
 https://docs.google.com/spreadsheets/d/1dc9p5378a16hPYYTydRQ0Ujdg2pYyo6_ty7HVVws5Kk/edit?usp=drive_link
 # 開発環境
