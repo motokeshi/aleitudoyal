@@ -53,6 +53,11 @@ RSpec.describe Reminder, type: :model do
         @reminder.valid?
         expect(@reminder.errors.full_messages).to include("Frequency day or week or month or year can't be 0")
       end
+      it 'ユーザーと紐づいていなければ登録できない' do
+        @reminder.user = nil
+        @reminder.valid?
+        expect(@reminder.errors.full_messages).to include("User must exist")
+      end
     end
   end
 end
