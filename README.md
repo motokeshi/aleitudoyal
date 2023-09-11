@@ -55,7 +55,7 @@ https://docs.google.com/spreadsheets/d/1McREI74N2XKN0p3ukczWveXjhy9VAI8qFQ3ZrCLY
 [![Image from Gyazo](https://i.gyazo.com/99a890814637004363e65bbf4031fcf3.png)](https://gyazo.com/99a890814637004363e65bbf4031fcf3)
 
 * リマインダーとDoyalの関連付け
-[![Image from Gyazo](https://i.gyazo.com/93f193d44f836a9993887606e2eabedd.gif)](https://gyazo.com/93f193d44f836a9993887606e2eabedd)
+[![Image from Gyazo](https://i.gyazo.com/75ccdfa81076e92207c27363f3da8d45.png)](https://gyazo.com/75ccdfa81076e92207c27363f3da8d45)
 
 # 実装予定の機能
 今後は以下の機能を実装していく予定です。
