@@ -3,6 +3,9 @@ class PostsController < ApplicationController
     set_article
     @posts = @article.posts
     @post = Post.new
+    if @article.user_id != current_user.id
+      redirect_to root_path
+    end
   end
 
   def create
@@ -18,6 +21,9 @@ class PostsController < ApplicationController
   def edit
     @article = Article.find(params[:article_id])
     @post = Post.find(params[:id])
+    if @article.user_id != current_user.id
+      redirect_to root_path
+    end
   end
 
   def update

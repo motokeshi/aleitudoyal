@@ -1,4 +1,6 @@
 class ArticlesController < ApplicationController
+  before_action :authenticate_user!, except: [:show, :index]
+
   def index
     @articles = Article.articles_search(params[:keyword]).order(updated_at: :desc).includes(:user).with_attached_image
   end
@@ -9,6 +11,15 @@ class ArticlesController < ApplicationController
     @comment = Comment.new
     @comments = @article.comments.includes(:user)
     @reminders = @article.reminders.with_attached_image
+    if user_signed_in?
+      if @article.release == false && @article.user_id != current_user.id
+        redirect_to root_path
+      end
+    else
+      if @article.release == false
+        redirect_to root_path
+      end
+    end
   end
 
   def new
@@ -26,6 +37,9 @@ class ArticlesController < ApplicationController
 
   def edit
     @article = Article.find(params[:id])
+    if @article.user_id != current_user.id
+      redirect_to root_path
+    end
   end
 
   def update
@@ -46,6 +60,9 @@ class ArticlesController < ApplicationController
   def search
     article_set
     @reminders = Reminder.reminders_search(current_user.id, params[:keyword])
+    if @article.release == false && @article.user_id != current_user.id
+      redirect_to root_path
+    end
   end
 
   def relation
