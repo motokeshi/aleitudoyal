@@ -20,6 +20,9 @@ class RecordsController < ApplicationController
   def edit
     @reminder = Reminder.find(params[:reminder_id])
     @record = Record.find(params[:id])
+    if @reminder.user_id != current_user.id
+      redirect_to root_path
+    end
   end
 
   def update

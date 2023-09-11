@@ -9,6 +9,9 @@ class RemindersController < ApplicationController
   def show
     @records = @reminder.records.order(implementation_record: :desc)
     @articles = @reminder.articles
+    if @reminder.user_id != current_user.id
+      redirect_to root_path
+    end
   end
 
   def new
@@ -25,6 +28,9 @@ class RemindersController < ApplicationController
   end
 
   def edit
+    if @reminder.user_id != current_user.id
+      redirect_to root_path
+    end
   end
 
   def update
@@ -45,6 +51,9 @@ class RemindersController < ApplicationController
 
   def search
     @articles = Article.articles_search(params[:keyword])
+    if @reminder.user_id != current_user.id
+      redirect_to root_path
+    end
   end
 
   def relation
