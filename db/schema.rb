@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_30_131535) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_11_075352) do
   create_table "active_storage_attachments", charset: "utf8", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -62,11 +62,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_30_131535) do
   create_table "posts", charset: "utf8", force: :cascade do |t|
     t.text "text"
     t.bigint "article_id", null: false
-    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["article_id"], name: "index_posts_on_article_id"
-    t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
   create_table "records", charset: "utf8", force: :cascade do |t|
@@ -124,7 +122,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_30_131535) do
   add_foreign_key "comments", "articles"
   add_foreign_key "comments", "users"
   add_foreign_key "posts", "articles"
-  add_foreign_key "posts", "users"
   add_foreign_key "records", "reminders"
   add_foreign_key "reminder_articles", "articles"
   add_foreign_key "reminder_articles", "reminders"

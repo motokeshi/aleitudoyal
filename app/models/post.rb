@@ -1,6 +1,5 @@
 class Post < ApplicationRecord
   belongs_to :article
-  belongs_to :user
   has_one_attached :image, dependent: :destroy
 
   validates :text, presence: {message: "or Image can't be blank"} , unless: :was_attached?

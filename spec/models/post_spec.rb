@@ -25,11 +25,6 @@ RSpec.describe Post, type: :model do
         @post.valid?
         expect(@post.errors.full_messages).to include("Text or Image can't be blank")
       end
-      it 'ユーザーが紐づいていないと投稿できない' do
-        @post.user = nil
-        @post.valid?
-        expect(@post.errors.full_messages).to include("User must exist")
-      end
       it '記事概要が紐づいていないと投稿できない' do
         @post.article = nil
         @post.valid?
