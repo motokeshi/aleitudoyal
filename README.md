@@ -15,8 +15,12 @@ Aleitu.Doyal（アレイツ・ドーヤル）
 # URL
 https://aleitu-doyal.onrender.com
 # テスト用アカウント
+### ユーザー1
 mail : test1@test.com<br>
 pass : 111111
+### ユーザー2
+mail : test2@test.com
+pass : 222222
 # 利用方法
 サイトにアクセスすると、投稿されたDoyalの一覧ページが表示されます。<br>
 未ログインの状態ではDoyalの詳細・ユーザーの詳細ページの表示のみ行えます。<br>
@@ -78,6 +82,6 @@ Ruby/Ruby on Rails/JavaScript/MySQL/Github/Visual Studio Code
 * リマインダーとDoyalの関連付けを、重複して設定できてしまう。
 * スマートフォンからアクセスすると、使い難い表示になってしまう。
 # 製作時間
-* 制作期間：13日
+* 制作期間：14日
 * 一日当たりの平均作業時間：7時間
-* 合計：90時間程度
+* 合計：100時間程度
