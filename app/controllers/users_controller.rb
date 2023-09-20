@@ -15,20 +15,20 @@ class UsersController < ApplicationController
     @articles = @user.articles.order(updated_at: :desc).with_attached_image
   end
 
-  def edit
-    @user = User.find(params[:id])
-    return if @user == current_user
-    redirect_to root_path
-  end
+  # def edit
+  #   @user = User.find(params[:id])
+  #   return if @user == current_user
+  #   redirect_to root_path
+  # end
 
-  def update
-    @user = User.find(current_user.id)
-    if @user.update(user_params)
-      redirect_to user_path(current_user)
-    else
-      render :edit, status: :unprocessable_entity
-    end
-  end
+  # def update
+  #   @user = User.find(current_user.id)
+  #   if @user.update(user_params)
+  #     redirect_to user_path(current_user)
+  #   else
+  #     render :edit, status: :unprocessable_entity
+  #   end
+  # end
 
   def destroy
     @user = User.find(params[:id])

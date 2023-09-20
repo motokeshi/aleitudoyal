@@ -57,7 +57,7 @@
       <% if user_signed_in? && @user == current_user %>
         <div class="btn-field">
           <div>
-            <%= link_to "ユーザー情報編集", edit_user_path(@user), class: "form-submit-btn" %>
+            <%= link_to "ユーザー情報編集", edit_user_registration_path(@user), class: "form-submit-btn" %>
           </div>
           <div>
             <%= check_box "delete", "user", { style: "display: none;" } %>

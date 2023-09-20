@@ -7,7 +7,7 @@ class User < ApplicationRecord
   # deviseの機能を使って、ユーザー更新ページを実装する。
   # ユーザー登録時のパスワード欄に半角英数以外の文字をコピペして登録できてしまう。
   # パスワードにバリデーションを設定すると、現状ではユーザー情報が更新できなくなってしまう。
-  # validates :password, format: { with: /\A[a-z\d]+\z/i }
+  validates :password, format: { with: /\A[a-z\d]+\z/i }, on: :create
 
   has_many :reminders, dependent: :destroy
   has_many :articles , dependent: :destroy
