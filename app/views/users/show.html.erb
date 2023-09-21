@@ -75,9 +75,9 @@
         </div>
       <% end %>
     </div>
-    <p class="wrapper-subtitle"><%= "#{@user.name}" %>さんの最近の投稿</p>
+    <p class="wrapper-subtitle"><%= "#{@user.name}" %>さんの投稿</p>
     <% @articles.each do |article| %>
-      <% if article.release == true || article.user_id == current_user.id %>
+      <% if article.release == true %>
         <div class="article-card-wrapper">
           <div class="article-card-header">
             <div class="article-card-image">
@@ -103,6 +103,40 @@
             </div>
           </div>
         </div>
+      <% end %>
+    <% end %>
+    <% if user_signed_in? %>
+      <% if @user.id == current_user.id %>
+        <p class="wrapper-subtitle"><%= "#{@user.name}" %>さんの非公開の投稿</p>
+        <% @articles.each do |article| %>
+          <% if article.release == false && article.user_id == current_user.id %>
+            <div class="article-card-wrapper">
+              <div class="article-card-header">
+                <div class="article-card-image">
+                  <% if article.image.present? %>
+                    <%= link_to image_tag(article.image, class: "article-card-image"), article_path(article) %>
+                  <% else %>
+                    <%= link_to image_tag("no-image.jpg", class: "article-card-image"), article_path(article) %>
+                  <% end %>
+                </div>
+                <div class="article-card-content">
+                  <div>
+                    タイトル : <%= link_to article.title, article_path(article) %>
+                  </div>
+                  <div>
+                    ジャンル : <%= article.genre.name %>
+                  </div>
+                  <div>
+                    作成者　 : <%= link_to article.user.name, user_path(article.user) %>
+                  </div>
+                  <div>
+                    投稿日時 : <%= article.updated_at %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
       <% end %>
     <% end %>
   </div>
