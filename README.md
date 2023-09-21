@@ -19,7 +19,7 @@ https://aleitu-doyal.onrender.com
 mail : test1@test.com<br>
 pass : 111111
 ### ユーザー2
-mail : test2@test.com
+mail : test2@test.com<br>
 pass : 222222
 # 利用方法
 サイトにアクセスすると、投稿されたDoyalの一覧ページが表示されます。<br>
