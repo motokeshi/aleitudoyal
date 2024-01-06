@@ -13,7 +13,7 @@ Aleitu.Doyal（アレイツ・ドーヤル）
 * 記事作成、更新
 * リマインダーと記事の関連付け
 # URL
-https://aleitu-doyal.onrender.com
+-----（サービスを停止させました）
 # テスト用アカウント
 ### ユーザー1
 mail : test1@test.com<br>
